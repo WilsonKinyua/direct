@@ -1,0 +1,15 @@
+models:
+    Showroom:
+        id: id
+        name: string:500
+        location: string:500
+        map_link: longText nullable
+        phone_number: string:200
+        email: string:100
+        web_url: longText nullable
+        admin_name: char
+        admin_email: char
+seeders: Showroom
+controllers:
+    Showroom:
+        resource
