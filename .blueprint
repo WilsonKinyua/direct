@@ -1,0 +1,14 @@
+created:
+    - app/Http/Controllers/ShowroomController.php
+    - database/factories/ShowroomFactory.php
+    - database/migrations/2022_01_20_185546_create_showrooms_table.php
+    - app/Models/Showroom.php
+    - tests/Feature/Http/Controllers/ShowroomControllerTest.php
+    - app/Events/NewShowroom.php
+    - app/Http/Requests/ShowroomStoreRequest.php
+    - app/Jobs/SyncMedia.php
+    - app/Mail/CreateNewShowroomAdmin.php
+updated:
+    - routes/web.php
+models:
+    Showroom: { softdeletes: softDeletes, id: bigIncrements, name: 'string:500', location: 'string:500', map_link: 'longText nullable', phone_number: 'string:200', email: 'string:100', web_url: 'longText nullable', admin_name: char, admin_email: char }

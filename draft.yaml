@@ -1,15 +1,26 @@
 models:
-    Showroom:
-        id: id
-        name: string:500
-        location: string:500
-        map_link: longText nullable
-        phone_number: string:200
-        email: string:100
-        web_url: longText nullable
-        admin_name: char
-        admin_email: char
-seeders: Showroom
+  Showroom:
+    softDeletes: true
+    id: bigIncrements
+    name: string:500
+    location: string:500
+    map_link: longText nullable
+    phone_number: string:200
+    email: string:100
+    web_url: longText nullable
+    admin_name: char
+    admin_email: char
+
 controllers:
-    Showroom:
-        resource
+  Showroom:
+    index:
+      query: all
+
+    store:
+      validate: name, location, phone_number, email, admin_name, admin_email
+      save: showroom
+      send: CreateNewShowroomAdmin to:showroom.name.email.admin_name.admin_email with:showroom
+      dispatch: SyncMedia with:showroom
+      fire: NewShowroom with:showroom
+      flash: showroom.name
+      redirect: showroom.index
