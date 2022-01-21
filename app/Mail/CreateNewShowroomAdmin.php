@@ -30,6 +30,6 @@ class CreateNewShowroomAdmin extends Mailable
      */
     public function build()
     {
-        return $this->view('view.emails.showroom-admin-account-activate.blade');
+        return $this->view('emails.showroom-admin-account-activate')->with("showroom", $this->showroom);
     }
 }

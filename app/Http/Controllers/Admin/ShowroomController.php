@@ -30,7 +30,8 @@ class ShowroomController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.showrooms.create');
     }
 
     /**
@@ -41,17 +42,17 @@ class ShowroomController extends Controller
      */
     public function store(ShowroomStoreRequest $request)
     {
-        $showroom = Showroom::create($request->validated());
+        $showroom = Showroom::create($request->all());
 
-        Mail::to($showroom->name->email->admin_name->admin_email)->send(new CreateNewShowroomAdmin($showroom));
+        // Mail::to($showroom->admin_email)->send(new CreateNewShowroomAdmin($showroom));
 
         SyncMedia::dispatch($showroom);
 
         event(new NewShowroom($showroom));
 
-        $request->session()->flash('showroom.name', $showroom->name);
+        // $request->session()->flash('showroom.name', $showroom->name);
 
-        return redirect()->route('showroom.index');
+        return redirect()->back()->with('success', 'Showroom created successfully');
     }
 
     /**

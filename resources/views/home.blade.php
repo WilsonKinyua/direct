@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
                         <a href="">
-                            <div class="overview-panel purple">
+                            <div class="overview-panel yellow">
                                 <div class="symbol">
                                     <i class="fa fa-car usr-clr"></i>
                                 </div>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <a href="">
-                            <div class="overview-panel orange">
+                            <div class="overview-panel green">
                                 <div class="symbol">
                                     <i class="fa fa-cab"></i>
                                 </div>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <a href="">
-                            <div class="overview-panel deepPink-bgcolor">
+                            <div class="overview-panel pink">
                                 <div class="symbol">
                                     <i class="fa fa-times-circle-o"></i>
                                 </div>
@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <a href="">
-                            <div class="overview-panel blue-bgcolor">
+                            <div class="overview-panel red">
                                 <div class="symbol">
                                     <i class="fa fa-money"></i>
                                 </div>

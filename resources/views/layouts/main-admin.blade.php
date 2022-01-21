@@ -84,6 +84,7 @@
     <script src="{{ asset('admin-assets/plugins/popper/popper.js') }}"></script>
     <script src="{{ asset('admin-assets/plugins/jquery-blockui/jquery.blockui.min.js') }}"></script>
     <script src="{{ asset('admin-assets/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
+    <script src="{{ asset('admin-assets/plugins/material/material.min.js')}}"></script>
     <!-- bootstrap -->
     <script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('admin-assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>

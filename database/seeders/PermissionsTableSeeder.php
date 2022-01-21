@@ -76,27 +76,27 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 17,
-                'title' => 'inventory_create',
+                'title' => 'profile_password_edit',
             ],
             [
                 'id'    => 18,
-                'title' => 'inventory_edit',
+                'title' => 'showroom_edit',
             ],
             [
                 'id'    => 19,
-                'title' => 'inventory_show',
+                'title' => 'showroom_show',
             ],
             [
                 'id'    => 20,
-                'title' => 'inventory_delete',
+                'title' => 'showroom_delete',
             ],
             [
                 'id'    => 21,
-                'title' => 'inventory_access',
+                'title' => 'showroom_access',
             ],
             [
                 'id'    => 22,
-                'title' => 'profile_password_edit',
+                'title' => 'showroom_create',
             ],
         ];
 

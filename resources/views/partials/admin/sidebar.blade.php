@@ -27,31 +27,35 @@
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link nav-toggle"> <i class="material-icons">business</i>
-                        <span class="title">Showrooms</span> <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link ">
-                                <i class="fa fa-list"></i>
-                                <span class="title">Add Showroom</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link ">
-                                <i class="fa fa-plus-circle"></i>
-                                <span class="title">All Showrooms</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link ">
-                                <i class="fa fa-plus-circle"></i>
-                                <span class="title">Showroom Admins</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                @can('showroom_access')
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-toggle"> <i class="material-icons">business</i>
+                            <span class="title">Showrooms</span> <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            @can('showroom_create')
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.showrooms.create') }}" class="nav-link ">
+                                        <i class="fa fa-list"></i>
+                                        <span class="title">Add Showroom</span>
+                                    </a>
+                                </li>
+                            @endcan
+                            <li class="nav-item">
+                                <a href="#" class="nav-link ">
+                                    <i class="fa fa-plus-circle"></i>
+                                    <span class="title">All Showrooms</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link ">
+                                    <i class="fa fa-plus-circle"></i>
+                                    <span class="title">Showroom Admins</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
                 <li class="nav-item">
                     <a href="#" class="nav-link nav-toggle"> <i class="material-icons">group</i>
                         <span class="title"> Auctions</span> <span class="arrow"></span>
