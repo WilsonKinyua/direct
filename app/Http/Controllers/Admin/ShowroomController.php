@@ -21,6 +21,7 @@ class ShowroomController extends Controller
     public function index()
     {
         $showrooms = Showroom::all();
+        return view('admin.showrooms.index', compact('showrooms'));
     }
 
     /**
