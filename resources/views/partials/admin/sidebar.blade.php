@@ -28,25 +28,26 @@
                     </a>
                 </li>
                 @can('showroom_access')
-                    <li class="nav-item">
+                    <li
+                        class="nav-item {{ request()->is('admin/showrooms*') ? 'active open' : '' }} {{ request()->is('admin/showrooms*') ? 'active open' : '' }} {{ request()->is('admin/showrooms*') ? 'active open' : '' }}">
                         <a href="#" class="nav-link nav-toggle"> <i class="material-icons">business</i>
                             <span class="title">Showrooms</span> <span class="arrow"></span>
                         </a>
                         <ul class="sub-menu">
+                            <li class="nav-item {{ request()->is('admin/showrooms') || request()->is('admin/showrooms/*') ? 'active' : '' }}">
+                                <a href="{{ route('admin.showrooms.index') }}" class="nav-link ">
+                                    <i class="fa fa-plus-circle"></i>
+                                    <span class="title">All Showrooms</span>
+                                </a>
+                            </li>
                             @can('showroom_create')
-                                <li class="nav-item">
+                                <li class="nav-item {{ request()->is('admin/showrooms') || request()->is('admin/showrooms/*') ? 'active' : '' }}">
                                     <a href="{{ route('admin.showrooms.create') }}" class="nav-link ">
                                         <i class="fa fa-list"></i>
                                         <span class="title">Add Showroom</span>
                                     </a>
                                 </li>
                             @endcan
-                            <li class="nav-item">
-                                <a href="#" class="nav-link ">
-                                    <i class="fa fa-plus-circle"></i>
-                                    <span class="title">All Showrooms</span>
-                                </a>
-                            </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link ">
                                     <i class="fa fa-plus-circle"></i>
