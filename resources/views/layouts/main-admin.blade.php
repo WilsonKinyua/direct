@@ -40,6 +40,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     <!-- Date Time item CSS -->
     <link rel="stylesheet" href="{{ asset('admin-assets/plugins/flatpicker/css/flatpickr.min.css') }}" />
+    <!-- Jquery Toast css -->
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
     <!-- favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" />
     @yield('css')
@@ -113,6 +115,9 @@
     <!-- dropzone -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 
+    <!-- notifications -->
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+
     {{-- <!-- material -->
     <script src="{{ asset('admin-assetsplugins/material/material.min.js') }}"></script>
     <!--apex chart-->
@@ -122,6 +127,30 @@
     <script src="{{ asset('admin-assetsplugins/summernote/summernote.js') }}"></script>
     <script src="{{ asset('admin-assetsjs/pages/summernote/summernote-data.js') }}"></script>
     <!-- end js include path --> --}}
+    <script>
+        // Get the Toast button
+        var toastButton = document.getElementById("toast-btn");
+        // Get the Toast element
+        var toastElement = document.getElementsByClassName("toast")[0];
+
+        toastButton.onclick = function() {
+            $('.toast').toast('show');
+        }
+    </script>
+    <script>
+        // toast message
+        @if (session()->has('success'))
+            toastr.success("{{ session()->get('success') }}");
+        @endif
+
+        @if (session()->has('danger'))
+            toastr.warning("{{ session()->get('danger') }}");
+        @endif
+
+        @if (session()->has('error'))
+            toastr.error("{{ session()->get('error') }}");
+        @endif
+    </script>
     @yield('js')
 </body>
 
