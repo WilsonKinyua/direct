@@ -72,9 +72,15 @@
                                                             @foreach ($showrooms as $showroom)
                                                                 <tr class="odd gradeX">
                                                                     <td>
-                                                                        <img src="https://direct.co.ke/showroom/assets/img/lota.png"
-                                                                            alt="" class="img img-responsive"
-                                                                            style="border-radius: 3px; ">
+                                                                        @if ($showroom->logo)
+                                                                            <a href="{{ $showroom->logo->getUrl() }}"
+                                                                                target="_blank"
+                                                                                style="display: inline-block">
+                                                                                <img src="{{ $showroom->logo->getUrl('thumb') }}"
+                                                                                    alt="" class="img img-responsive"
+                                                                                    style="border-radius: 50%; ">
+                                                                            </a>
+                                                                        @endif
                                                                     </td>
                                                                     <td>
                                                                         {{ $showroom->name }}

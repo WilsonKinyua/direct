@@ -30,6 +30,9 @@ class ShowroomStoreRequest extends FormRequest
             'email' => ['required', 'email', 'max:100'],
             'admin_name' => ['required', 'string'],
             'admin_email' => ['required', 'string'],
+            'logo.*' => [
+                'required',
+            ],
         ];
     }
 }

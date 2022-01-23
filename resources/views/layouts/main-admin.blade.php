@@ -9,7 +9,7 @@
     <meta name="description" content="Direct.co.ke - Admin Dashboard" />
     <meta name="author" content="Direct.co.ke" />
     <title>
-         Admin | Direct.co.ke
+        Admin | Direct.co.ke
     </title>
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
@@ -36,6 +36,10 @@
     <link href="{{ asset('admin-assets/css/theme/dark/style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin-assets/css/responsive.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin-assets/css/theme/dark/theme-color.css') }}" rel="stylesheet" type="text/css" />
+    <!-- dropzone -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
+    <!-- Date Time item CSS -->
+    <link rel="stylesheet" href="{{ asset('admin-assets/plugins/flatpicker/css/flatpickr.min.css') }}" />
     <!-- favicon -->
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" />
     @yield('css')
@@ -84,7 +88,7 @@
     <script src="{{ asset('admin-assets/plugins/popper/popper.js') }}"></script>
     <script src="{{ asset('admin-assets/plugins/jquery-blockui/jquery.blockui.min.js') }}"></script>
     <script src="{{ asset('admin-assets/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
-    <script src="{{ asset('admin-assets/plugins/material/material.min.js')}}"></script>
+    <script src="{{ asset('admin-assets/plugins/material/material.min.js') }}"></script>
     <!-- bootstrap -->
     <script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('admin-assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
@@ -102,9 +106,12 @@
     <script src="{{ asset('admin-assets/js/theme-color.js') }}"></script>
 
     <!-- data tables -->
-	<script src="{{ asset('admin-assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-	<script src="{{ asset('admin-assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js')}}"></script>
-	<script src="{{ asset('admin-assets/js/pages/table/table_data.js')}}"></script>
+    <script src="{{ asset('admin-assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin-assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('admin-assets/js/pages/table/table_data.js') }}"></script>
+
+    <!-- dropzone -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 
     {{-- <!-- material -->
     <script src="{{ asset('admin-assetsplugins/material/material.min.js') }}"></script>

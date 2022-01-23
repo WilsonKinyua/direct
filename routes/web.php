@@ -16,6 +16,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // ================================== superadmin ===========================
     // showrooms
+    Route::post('showrooms/media', 'ShowroomController@storeMedia')->name('showrooms.storeMedia');
+    Route::post('showrooms/ckmedia', 'ShowroomController@storeCKEditorImages')->name('showrooms.storeCKEditorImages');
     Route::resource('showrooms', 'ShowroomController');
 
     Route::get('/', 'HomeController@index')->name('home');

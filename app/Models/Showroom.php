@@ -10,7 +10,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Showroom extends Model
+class Showroom extends Model implements HasMedia
 {
     use InteractsWithMedia;
     use HasFactory, SoftDeletes;
@@ -27,12 +27,6 @@ class Showroom extends Model
         'deleted_at',
     ];
 
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'location',
@@ -52,14 +46,14 @@ class Showroom extends Model
 
     public function getLogoAttribute()
     {
-        $files = $this->getMedia('logo');
-        $files->each(function ($item) {
-            $item->url = $item->getUrl();
-            $item->thumbnail = $item->getUrl('thumb');
-            $item->preview = $item->getUrl('preview');
-        });
+        $file = $this->getMedia('logo')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
 
-        return $files;
+        return $file;
     }
 
     protected function serializeDate(DateTimeInterface $date)

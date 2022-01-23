@@ -27,7 +27,8 @@
                                     <i class="fa fa-car usr-clr"></i>
                                 </div>
                                 <div class="value white">
-                                    <p class="sbold addr-font-h1" data-counter="counterup" data-value="23">0</p>
+                                    <p class="sbold addr-font-h1" data-counter="counterup"
+                                        data-value="{{ count($showrooms) }}">0</p>
                                     <p>Showrooms</p>
                                 </div>
                             </div>
@@ -93,17 +94,18 @@
                                     <table class="table display product-overview mb-30" id="support_table">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Name </th>
-                                                <th>Location</th>
-                                                <th>No of Vehicles</th>
-                                                <th>Date Joined</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th> Name </th>
+                                                <th> Location </th>
+                                                <th> Phone Number </th>
+                                                <th> Email </th>
+                                                <th> Admin Name </th>
+                                                <th> Admin Email </th>
+                                                <th> Date Joined </th>
+                                                <th> Action </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
+                                            {{-- <tr>
                                                 <td>1</td>
                                                 <td>Lota Motors</td>
                                                 <td>Mombasa Kenya</td>
@@ -121,47 +123,45 @@
                                                         data-bs-toggle="tooltip" title="Fully Paid"><i
                                                             class="fa fa-check"></i></a>
                                                 </td>
-                                            </tr>
+                                            </tr> --}}
 
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Lota Motors</td>
-                                                <td>Mombasa Kenya</td>
-                                                <td>300</td>
-                                                <td>27/12/2021</td>
-                                                <td>
-                                                    <span class="label label-sm label-success">open</span>
-                                                </td>
-                                                <td>
-                                                    <a href="javascript:void(0)" class="text-inverse" title="View Invoice"
-                                                        data-bs-toggle="tooltip">
-                                                        <i class="fa fa-bookmark-o"></i></a>
-                                                    &nbsp; &nbsp;
-                                                    <a href="javascript:void(0)" class=""
-                                                        data-bs-toggle="tooltip" title="Fully Paid"><i
-                                                            class="fa fa-check"></i></a>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Lota Motors</td>
-                                                <td>Mombasa Kenya</td>
-                                                <td>300</td>
-                                                <td>27/12/2021</td>
-                                                <td>
-                                                    <span class="label label-sm label-danger">closed</span>
-                                                </td>
-                                                <td>
-                                                    <a href="javascript:void(0)" class="text-inverse" title="View Invoice"
-                                                        data-bs-toggle="tooltip">
-                                                        <i class="fa fa-bookmark-o"></i></a>
-                                                    &nbsp; &nbsp;
-                                                    <a href="javascript:void(0)" class=""
-                                                        data-bs-toggle="tooltip" title="Fully Paid"><i
-                                                            class="fa fa-check"></i></a>
-                                                </td>
-                                            </tr>
+                                            @foreach ($showrooms as $showroom)
+                                                <tr>
+                                                    <td>
+                                                        {{ $showroom->name }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $showroom->location }}
+                                                    </td>
+                                                    <td class="">
+                                                        <a
+                                                            href="tel:{{ $showroom->phone_number }}">{{ $showroom->phone_number }}</a>
+                                                    </td>
+                                                    <td>
+                                                        <a
+                                                            href="mailto:{{ $showroom->email }}">{{ $showroom->email }}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{ $showroom->admin_name }}
+                                                    </td>
+                                                    <td>
+                                                        <a
+                                                            href="mailto:{{ $showroom->admin_email }}">{{ $showroom->admin_email }}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{ $showroom->created_at->diffForHumans() }}
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0)" class="text-inverse"
+                                                            title="Edit Showroom" data-bs-toggle="tooltip">
+                                                            <i class="fa fa-edit"></i></a>
+                                                        &nbsp; &nbsp;
+                                                        <a href="javascript:void(0)" class="text-danger"
+                                                            data-bs-toggle="tooltip" title="Delete Showroom"><i
+                                                                class="fa  fa-trash-o"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
