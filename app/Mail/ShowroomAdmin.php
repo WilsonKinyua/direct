@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class CreateNewShowroomAdmin extends Mailable
+class ShowroomAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,6 +30,6 @@ class CreateNewShowroomAdmin extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.showroom-admin-account-activate')->with("showroom", $this->showroom);
+        return $this->subject('Account Activation 😃 - Direct.co.ke')->view('emails.showroom-admin');
     }
 }

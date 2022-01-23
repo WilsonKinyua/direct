@@ -7,7 +7,7 @@ use App\Events\NewShowroom;
 use App\Http\Requests\ShowroomStoreRequest;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Jobs\SyncMedia;
-use App\Mail\CreateNewShowroomAdmin;
+use App\Mail\ShowroomAdmin;
 use App\Models\Showroom;
 use Illuminate\Http\Request;
 use Gate;
@@ -35,11 +35,8 @@ class ShowroomController extends Controller
     {
         $showroom = Showroom::create($request->all());
 
-        // Mail::to($showroom->admin_email)->send(new CreateNewShowroomAdmin($showroom));
-
-        // SyncMedia::dispatch($showroom);
-
-        // event(new NewShowroom($showroom));
+        // send email to admin to activate the showroom account
+        // Mail::to($showroom->admin_email)->send(new ShowroomAdmin($showroom));
 
         if ($request->input('logo', false)) {
             $showroom->addMedia(storage_path('tmp/uploads/' . basename($request->input('logo'))))->toMediaCollection('logo');
