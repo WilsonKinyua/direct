@@ -101,6 +101,10 @@ class PermissionsTableSeeder extends Seeder
             [
                 'id'    => 23,
                 'title' => 'superadmin_management_access',
+            ],
+            [
+                'id'    => 24,
+                'title' => 'showroom_admin_access',
             ]
         ];
 

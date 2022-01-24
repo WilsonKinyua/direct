@@ -21,14 +21,14 @@
                         </div>
                     </div>
                 </li>
+                <li class="nav-item start active open">
+                    <a href="{{ route('admin.home') }}" class="nav-link nav-toggle">
+                        <i class="material-icons">dashboard</i>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                {{-- ========================================== superadmin access start ==================================== --}}
                 @can('superadmin_management_access')
-                    {{-- superadmin access --}}
-                    <li class="nav-item start active open">
-                        <a href="{{ route('admin.home') }}" class="nav-link nav-toggle">
-                            <i class="material-icons">dashboard</i>
-                            <span class="title">Dashboard</span>
-                        </a>
-                    </li>
                     @can('showroom_access')
                         <li
                             class="nav-item {{ request()->is('admin/showrooms*') ? 'active open' : '' }} {{ request()->is('admin/showrooms*') ? 'active open' : '' }} {{ request()->is('admin/showrooms*') ? 'active open' : '' }}">
@@ -159,6 +159,79 @@
                         </li>
                     @endcan
                 @endcan
+                {{-- ========================================== superadmin access end ==================================== --}}
+                {{-- ========================================== showroomadmin access start ==================================== --}}
+                @can('showroom_admin_access')
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-toggle"> <i class="material-icons">business</i>
+                            <span class="title">Inventory</span> <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link ">
+                                    <i class="fa fa-list"></i>
+                                    <span class="title">All Inventory</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link ">
+                                    <i class="fa fa-plus-circle"></i>
+                                    <span class="title">Add Inventory</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-toggle"> <i class="material-icons">group</i>
+                            <span class="title"> Staff</span> <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link ">
+                                    <i class="fa fa-group"></i>
+                                    <span class="title">All Staff</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link ">
+                                    <i class="fa fa-user-plus"></i>
+                                    <span class="title">Add Staff</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-toggle">
+                            <i class="material-icons">dvr</i>
+                            <span class="title">Sales</span>
+                            <span class="label label-rouded label-menu label-warning">new</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link ">
+                                    <i class="fa fa-plus-circle"></i>
+                                    <span class="title">Record Sales</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link ">
+                                    <i class="fa fa-list"></i>
+                                    <span class="title">Sales Overview</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{-- <li class="nav-item">
+                        <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="material-icons">settings</i>
+                            <span class="title">settings</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li> --}}
+                @endcan
+                {{-- ========================================== showroomadmin access end ==================================== --}}
+
                 <li class="nav-item">
                     <a href="#" class="nav-link nav-toggle"
                         onclick="event.preventDefault(); document.getElementById('logoutform').submit();"> <i
