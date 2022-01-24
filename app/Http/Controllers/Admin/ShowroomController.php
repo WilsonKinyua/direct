@@ -9,6 +9,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Jobs\SyncMedia;
 use App\Mail\ShowroomAdmin;
 use App\Models\Showroom;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Gate;
 use Illuminate\Support\Facades\Mail;
@@ -36,7 +37,15 @@ class ShowroomController extends Controller
         $showroom = Showroom::create($request->all());
 
         // send email to admin to activate the showroom account
-        // Mail::to($showroom->admin_email)->send(new ShowroomAdmin($showroom));
+        Mail::to($showroom->admin_email)->send(new ShowroomAdmin($showroom));
+
+        // create a new user for the showroom admin
+        // User::create([
+        //     'name' => $showroom->admin_name,
+        //     'email' => $showroom->admin_email,
+        //     'showroom_id' => $showroom->id,
+        //     'role_id' => 2,
+        // ]);
 
         if ($request->input('logo', false)) {
             $showroom->addMedia(storage_path('tmp/uploads/' . basename($request->input('logo'))))->toMediaCollection('logo');

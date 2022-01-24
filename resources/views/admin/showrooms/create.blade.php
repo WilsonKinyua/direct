@@ -106,8 +106,8 @@
                                                     class="text-danger">*</span></strong>
                                             <div class="col-md-12">
                                                 <div class="needsclick dropzone {{ $errors->has('logo') ? 'is-invalid' : '' }}"
-                                                    {{-- id="logo-dropzone"> --}}
-                                                    id="-dropzone">
+                                                    id="logo-dropzone">
+                                                    {{-- id="-dropzone"> --}}
                                                 </div>
                                             </div>
                                     </div>
