@@ -1,1 +1,1 @@
-<h2>Hello testing</h2>
+<h2>Hello {{ $showroom->admin_name  }} {{ $showroom->admin_email}}</h2>

@@ -6,7 +6,7 @@
                 <div class="page-title-breadcrumb">
                     <div class=" pull-left">
                         <div class="page-title">Welcome back, <span
-                                class="text-primary">{{ Auth::user()->name ?? 'Admin' }}</span></div>
+                                class="text-primary">{{ Auth::user()->name ?? 'Admin' }} ..</span></div>
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
                         <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
