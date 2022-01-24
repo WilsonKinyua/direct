@@ -23,6 +23,7 @@ class CreateShowroomsTable extends Migration
             $table->longText('web_url')->nullable();
             $table->char('admin_name');
             $table->char('admin_email');
+            $table->longText('token')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

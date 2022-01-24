@@ -9,6 +9,10 @@ Route::get('/home', function () {
     return redirect()->route('admin.home');
 });
 
+// activate showroom account
+Route::get('/showroom/activate/{token}', 'Admin\ShowroomController@activateShowroomAdminAccount')->name('showroom.activate');
+Route::post('/showroom/account/password', 'Admin\ShowroomController@updateShowroomAdminAccountPassword')->name('showroom.account.password');
+
 Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
@@ -38,8 +42,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('inventories/media', 'InventoryController@storeMedia')->name('inventories.storeMedia');
     Route::post('inventories/ckmedia', 'InventoryController@storeCKEditorImages')->name('inventories.storeCKEditorImages');
     Route::resource('inventories', 'InventoryController');
-
-
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
@@ -50,5 +52,3 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
 });
-
-

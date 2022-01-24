@@ -98,6 +98,10 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 22,
                 'title' => 'showroom_create',
             ],
+            [
+                'id'    => 23,
+                'title' => 'superadmin_management_access',
+            ]
         ];
 
         Permission::insert($permissions);

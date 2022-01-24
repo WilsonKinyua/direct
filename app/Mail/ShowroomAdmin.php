@@ -30,6 +30,6 @@ class ShowroomAdmin extends Mailable
      */
     public function build()
     {
-        return $this->subject('Account Activation 😃 - Direct.co.ke')->view('emails.showroom-admin');
+        return $this->subject('Account Activation - Direct.co.ke')->view('emails.showroom-admin');
     }
 }
