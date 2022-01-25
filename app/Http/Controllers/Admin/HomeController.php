@@ -54,7 +54,7 @@ class HomeController
             $showroom_id = $user->showroom->id;
             $inventories = Inventory::where('showroom_id', '=', $showroom_id)->orderBy("id", "desc")->get();
         } else {
-            $inventories = 0;
+            $inventories = [];
         }
         return view('home', compact('showrooms', 'inventories'));
     }

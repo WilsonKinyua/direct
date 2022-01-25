@@ -99,10 +99,9 @@
                                                                     </td>
                                                                     <td>
                                                                         @can('inventory_show')
-                                                                            <a class="btn btn-xs btn-primary" href="">
+                                                                            <a class="btn btn-xs btn-primary" href="{{ route('admin.inventories.show', $inventory->id) }}">
                                                                                 {{ trans('global.view') }}
                                                                             </a>
-                                                                            {{-- {{ route('admin.inventories.show', $inventory->id) }} --}}
                                                                         @endcan
                                                                             <br>
                                                                         @can('inventory_edit')
