@@ -19,8 +19,8 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'id'             => 2,
-                'name'           => 'Wilson Kinyua',
-                'email'          => 'showroom@direct.co.ke',
+                'name'           => 'Kirby Maynard',
+                'email'          => 'lota@direct.co.ke',
                 'password'       => bcrypt('password'),
                 'remember_token' => null,
             ],

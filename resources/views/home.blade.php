@@ -200,7 +200,8 @@
                                     <i class="fa fa-car usr-clr"></i>
                                 </div>
                                 <div class="value white">
-                                    <p class="sbold addr-font-h1" data-counter="counterup" data-value="23">0</p>
+                                    <p class="sbold addr-font-h1" data-counter="counterup"
+                                        data-value="{{ count($inventories) }}">0</p>
                                     <p>Vehicles in Stock</p>
                                 </div>
                             </div>
@@ -267,7 +268,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                {{-- <tr>
                                                     <td>1</td>
                                                     <td>Toyota Van</td>
                                                     <td>#TX10093</td>
@@ -285,48 +286,7 @@
                                                             data-bs-toggle="tooltip" title="Fully Paid"><i
                                                                 class="fa fa-check"></i></a>
                                                     </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>BMW X4</td>
-                                                    <td>#BM104</td>
-                                                    <td>24/12/2021</td>
-                                                    <td>Ksh. 9,300,000</td>
-                                                    <td>
-                                                        <span class="label label-sm label-primary">deposit</span>
-                                                    </td>
-                                                    <td>
-
-                                                        <a href="javascript:void(0)" class="text-inverse"
-                                                            title="Record Payment" data-bs-toggle="tooltip">
-                                                            <i class="fa fa-bookmark-o"></i></a> &nbsp; &nbsp;
-                                                        <a href="javascript:void(0)" class=""
-                                                            data-bs-toggle="tooltip" title="Paid Patialy"><i
-                                                                class="fa fa-check"></i></a>
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Tesla S3</td>
-                                                    <td>#TS012</td>
-                                                    <td>19/12/2021</td>
-                                                    <td>Ksh. 4,900,000</td>
-                                                    <td>
-                                                        <span class="label label-sm label-success">paid</span>
-                                                    </td>
-                                                    <td>
-
-                                                        <a href="javascript:void(0)" class="text-inverse"
-                                                            title="Record Payment" data-bs-toggle="tooltip">
-                                                            <i class="fa fa-bookmark-o"></i></a>
-                                                        &nbsp; &nbsp;
-                                                        <a href="javascript:void(0)" class=""
-                                                            data-bs-toggle="tooltip" title="Edit"><i
-                                                                class="fa fa-check"></i></a>
-                                                    </td>
-                                                </tr>
+                                                </tr> --}}
                                             </tbody>
                                         </table>
                                     </div>

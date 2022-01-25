@@ -48,6 +48,14 @@ class HomeController
         // }
         $showrooms = Showroom::orderBy("id", "desc")->get();
 
-        return view('home', compact('showrooms'));
+        // get logged in user showroom id
+        $user = auth()->user();
+        if ($user->showroom) {
+            $showroom_id = $user->showroom->id;
+            $inventories = Inventory::where('showroom_id', '=', $showroom_id)->orderBy("id", "desc")->get();
+        } else {
+            $inventories = 0;
+        }
+        return view('home', compact('showrooms', 'inventories'));
     }
 }
