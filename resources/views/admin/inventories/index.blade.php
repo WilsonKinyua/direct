@@ -34,9 +34,12 @@
                                                         class="table table-striped table-bordered table-hover table-checkable order-column valign-middle  center datatable-showroom"
                                                         id="example4">
                                                         <thead>
-                                                            <tr class="text-uppercase">
+                                                            <tr class="text-capitalize">
                                                                 <th>
-                                                                    Brand Name
+                                                                    Ref Id
+                                                                </th>
+                                                                <th>
+                                                                    Name
                                                                 </th>
                                                                 <th>
                                                                     Make
@@ -45,7 +48,7 @@
                                                                     Model
                                                                 </th>
                                                                 <th>
-                                                                    Manufacture Year
+                                                                    Year
                                                                 </th>
                                                                 <th>
                                                                     Price
@@ -56,9 +59,9 @@
                                                                 <th>
                                                                     {{ trans('cruds.inventory.fields.exterior_color') }}
                                                                 </th>
-                                                                <th>
+                                                                {{-- <th>
                                                                     {{ trans('cruds.inventory.fields.pictures') }}
-                                                                </th>
+                                                                </th> --}}
                                                                 <th>
                                                                     Action
                                                                 </th>
@@ -67,6 +70,9 @@
                                                         <tbody>
                                                             @foreach ($inventories as $key => $inventory)
                                                                 <tr class="odd gradeX">
+                                                                    <td class="text-uppercase">
+                                                                        {{ $inventory->ref_id ?? '' }}
+                                                                    </td>
                                                                     <td>
                                                                         {{ $inventory->brand_name ?? '' }}
                                                                     </td>
@@ -88,7 +94,7 @@
                                                                     <td>
                                                                         {{ $inventory->exterior_color ?? '' }}
                                                                     </td>
-                                                                    <td>
+                                                                    {{-- <td>
                                                                         @foreach ($inventory->pictures as $key => $media)
                                                                             <a href="{{ $media->getUrl() }}"
                                                                                 target="_blank"
@@ -96,20 +102,22 @@
                                                                                 <img src="{{ $media->getUrl('thumb') }}">
                                                                             </a>
                                                                         @endforeach
-                                                                    </td>
+                                                                    </td> --}}
                                                                     <td>
                                                                         @can('inventory_show')
-                                                                            <a class="btn btn-xs btn-primary" href="{{ route('admin.inventories.show', $inventory->id) }}">
+                                                                            <a class="btn btn-xs btn-primary"
+                                                                                href="{{ route('admin.inventories.show', $inventory->id) }}">
                                                                                 {{ trans('global.view') }}
                                                                             </a>
                                                                         @endcan
-                                                                            <br>
+                                                                        <br>
                                                                         @can('inventory_edit')
-                                                                            <a class="btn btn-xs btn-info" href="{{ route('admin.inventories.edit', $inventory->id) }}">
+                                                                            <a class="btn btn-xs btn-info"
+                                                                                href="{{ route('admin.inventories.edit', $inventory->id) }}">
                                                                                 {{ trans('global.edit') }}
                                                                             </a>
                                                                         @endcan
-                                                                            <br>
+                                                                        <br>
                                                                         @can('inventory_delete')
                                                                             <form
                                                                                 action="{{ route('admin.inventories.destroy', $inventory->id) }}"
