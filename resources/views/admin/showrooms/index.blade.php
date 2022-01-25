@@ -9,8 +9,8 @@
                         <div class="page-title">Showrooms Records</div>
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
-                        <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{{ route('admin.home')}}">Home</a>&nbsp;<i
-                                class="fa fa-angle-right"></i>
+                        <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
+                                href="{{ route('admin.home') }}">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
                         </li>
                         <li><a class="parent-item" href="#">Showrooms</a>&nbsp;<i class="fa fa-angle-right"></i>
                         </li>
@@ -77,25 +77,28 @@
                                                                         @endif
                                                                     </td>
                                                                     <td>
-                                                                        {{ $showroom->name }}
+                                                                        <a
+                                                                            href="{{ route('admin.showrooms.show', $showroom->id) }}">
+                                                                            {{ $showroom->name ?? '' }}
+                                                                        </a>
                                                                     </td>
                                                                     <td>
-                                                                        {{ $showroom->location }}
+                                                                        {{ $showroom->location ?? '' }}
                                                                     </td>
                                                                     <td class="center">
                                                                         <a
-                                                                            href="tel:{{ $showroom->phone_number }}">{{ $showroom->phone_number }}</a>
+                                                                            href="tel:{{ $showroom->phone_number ?? '' }}">{{ $showroom->phone_number ?? '' }}</a>
                                                                     </td>
                                                                     <td>
                                                                         <a
-                                                                            href="mailto:{{ $showroom->email }}">{{ $showroom->email }}</a>
+                                                                            href="mailto:{{ $showroom->email ?? '' }}">{{ $showroom->email ?? '' }}</a>
                                                                     </td>
                                                                     <td>
-                                                                        {{ $showroom->admin_name }}
+                                                                        {{ $showroom->admin_name ?? '' }}
                                                                     </td>
                                                                     <td>
                                                                         <a
-                                                                            href="mailto:{{ $showroom->admin_email }}">{{ $showroom->admin_email }}</a>
+                                                                            href="mailto:{{ $showroom->admin_email ?? '' }}">{{ $showroom->admin_email ?? '' }}</a>
                                                                     </td>
                                                                     <td>
                                                                         {{ $showroom->created_at->diffForHumans() }}

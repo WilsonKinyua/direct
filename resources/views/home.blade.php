@@ -103,48 +103,30 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {{-- <tr>
-                                                <td>1</td>
-                                                <td>Lota Motors</td>
-                                                <td>Mombasa Kenya</td>
-                                                <td>300</td>
-                                                <td>27/12/2021</td>
-                                                <td>
-                                                    <span class="label label-sm label-danger">closed</span>
-                                                </td>
-                                                <td>
-                                                    <a href="javascript:void(0)" class="text-inverse" title="View Invoice"
-                                                        data-bs-toggle="tooltip">
-                                                        <i class="fa fa-bookmark-o"></i></a>
-                                                    &nbsp; &nbsp;
-                                                    <a href="javascript:void(0)" class=""
-                                                        data-bs-toggle="tooltip" title="Fully Paid"><i
-                                                            class="fa fa-check"></i></a>
-                                                </td>
-                                            </tr> --}}
-
                                                 @foreach ($showrooms as $showroom)
                                                     <tr>
                                                         <td>
-                                                            {{ $showroom->name }}
+                                                            <a href="{{ route('admin.showrooms.show',$showroom->id) }}">
+                                                                {{ $showroom->name ?? '' }}
+                                                            </a>
                                                         </td>
                                                         <td>
-                                                            {{ $showroom->location }}
+                                                            {{ $showroom->location ?? '' }}
                                                         </td>
                                                         <td class="">
                                                             <a
-                                                                href="tel:{{ $showroom->phone_number }}">{{ $showroom->phone_number }}</a>
+                                                                href="tel:{{ $showroom->phone_number ?? '' }}">{{ $showroom->phone_number ?? '' }}</a>
                                                         </td>
                                                         <td>
                                                             <a
-                                                                href="mailto:{{ $showroom->email }}">{{ $showroom->email }}</a>
+                                                                href="mailto:{{ $showroom->email ?? '' }}">{{ $showroom->email ?? '' }}</a>
                                                         </td>
                                                         <td>
-                                                            {{ $showroom->admin_name }}
+                                                            {{ $showroom->admin_name ?? '' }}
                                                         </td>
                                                         <td>
                                                             <a
-                                                                href="mailto:{{ $showroom->admin_email }}">{{ $showroom->admin_email }}</a>
+                                                                href="mailto:{{ $showroom->admin_email ?? '' }}">{{ $showroom->admin_email ?? '' }}</a>
                                                         </td>
                                                         <td>
                                                             {{ $showroom->created_at->diffForHumans() }}

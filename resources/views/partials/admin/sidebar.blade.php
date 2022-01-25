@@ -110,14 +110,14 @@
                                         <span class="selected"></span>
                                     </a>
                                 </li>
-                                <li
+                                {{-- <li
                                     class="nav-item {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
                                     <a href="{{ route('admin.permissions.index') }}" class="nav-link ">
                                         <i class="fa fa-unlock"></i>
                                         <span class="title">{{ trans('cruds.permission.title') }}</span>
                                         <span class="selected"></span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item">
                                     <a href="#" class="nav-link ">
                                         <i class="fa fa-list"></i>

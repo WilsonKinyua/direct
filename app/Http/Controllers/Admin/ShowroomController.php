@@ -8,6 +8,7 @@ use App\Http\Requests\ShowroomStoreRequest;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Jobs\SyncMedia;
 use App\Mail\ShowroomAdmin;
+use App\Models\Inventory;
 use App\Models\Showroom;
 use App\Models\User;
 use Doctrine\DBAL\Schema\View;
@@ -46,15 +47,6 @@ class ShowroomController extends Controller
 
         // send email to admin to activate the showroom account
         Mail::to($showroom->admin_email)->send(new ShowroomAdmin($showroom));
-
-        // create a new user for the showroom admin
-        // User::create([
-        //     'name' => $showroom->admin_name,
-        //     'email' => $showroom->admin_email,
-        //     'showroom_id' => $showroom->id,
-        //     'role_id' => 2,
-        // ]);
-
         if ($request->input('logo', false)) {
             $showroom->addMedia(storage_path('tmp/uploads/' . basename($request->input('logo'))))->toMediaCollection('logo');
         }
@@ -66,9 +58,18 @@ class ShowroomController extends Controller
         return redirect()->route('admin.showrooms.index')->with('success', 'Showroom created successfully');
     }
 
-    public function show($id)
+    public function show(Showroom $showroom)
     {
         abort_if(Gate::denies('superadmin_management_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        if (!$showroom) {
+            return redirect()->route('admin.showrooms.index')->with('error', 'Showroom not found');
+        }
+        $showroom->load('media');
+
+        $inventories = Inventory::where('showroom_id', $showroom->id)->get();
+
+        return view('admin.showrooms.show', compact('showroom', 'inventories'));
     }
 
     public function edit($id)
