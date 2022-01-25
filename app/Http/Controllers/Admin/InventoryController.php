@@ -82,7 +82,7 @@ class InventoryController extends Controller
             }
         }
 
-        return redirect()->route('admin.inventories.index');
+        return redirect()->route('admin.inventories.index')->with('success', 'Inventory updated successfully.');;
     }
 
     public function show(Inventory $inventory)

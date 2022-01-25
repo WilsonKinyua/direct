@@ -1,4 +1,14 @@
 @extends('layouts.main-admin')
+@section('css')
+    <style>
+        .car-photos {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 5px 5px 0 0;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="page-content-wrapper">
         <div class="page-content">
@@ -34,159 +44,186 @@
                                                             Go Back
                                                         </a>
                                                     </div>
-                                                    <table class="table table-bordered table-striped">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th>
-                                                                    Brand Name
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->brand_name ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Make
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->make ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Model
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->model ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Manufacture Year
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->manufacture_year ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Registration Year
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->registration_year ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Transmission
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->transmission ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Milage
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->milage ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Number Of Doors
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->no_of_doors ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Price
-                                                                </th>
-                                                                <td>
-                                                                    Ksh {{ $inventory->price ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Engine Size
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->engine_size ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Fuel
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->fuel ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    {{ trans('cruds.inventory.fields.engine_type') }}
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->engine_type ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Body Type
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->body_type ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    {{ trans('cruds.inventory.fields.interior_color') }}
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->interior_color ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    {{ trans('cruds.inventory.fields.exterior_color') }}
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->exterior_color ?? '' }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Description
-                                                                </th>
-                                                                <td>
-                                                                    {!! $inventory->description ?? '' !!}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Created At
-                                                                </th>
-                                                                <td>
-                                                                    {{ $inventory->created_at->format('d-m-Y') }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    Car Photos
-                                                                </th>
-                                                                <td>
-                                                                    @foreach ($inventory->pictures as $key => $media)
-                                                                        <a href="{{ $media->getUrl() }}" target="_blank"
-                                                                            style="display: inline-block">
-                                                                            <img src="{{ $media->getUrl('thumb') }}">
-                                                                        </a>
-                                                                    @endforeach
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <table class="table table-bordered table-striped">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Ref Id
+                                                                        </th>
+                                                                        <td class="text-uppercase">
+                                                                            {{ $inventory->ref_id ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Brand Name
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->brand_name ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Make
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->make ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Model
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->model ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Manufacture Year
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->manufacture_year ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Registration Year
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->registration_year ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Transmission
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->transmission ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Milage
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->milage ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Number Of Doors
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->no_of_doors ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Price
+                                                                        </th>
+                                                                        <td>
+                                                                            Ksh {{ $inventory->price ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Engine Size
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->engine_size ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Fuel
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->fuel ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            {{ trans('cruds.inventory.fields.engine_type') }}
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->engine_type ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Body Type
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->body_type ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            {{ trans('cruds.inventory.fields.interior_color') }}
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->interior_color ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            {{ trans('cruds.inventory.fields.exterior_color') }}
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->exterior_color ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Description
+                                                                        </th>
+                                                                        <td>
+                                                                            {!! $inventory->description ?? '' !!}
+                                                                        </td>
+                                                                    </tr>
+                                                                    {{-- <tr>
+                                                                        <th>
+                                                                            Created At
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ $inventory->created_at->format('d-m-Y') }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Car Photos
+                                                                        </th>
+                                                                        <td>
+                                                                            @foreach ($inventory->pictures as $key => $media)
+                                                                                <a href="{{ $media->getUrl() }}"
+                                                                                    target="_blank"
+                                                                                    style="display: inline-block">
+                                                                                    <img
+                                                                                        src="{{ $media->getUrl('thumb') }}">
+                                                                                </a>
+                                                                            @endforeach
+                                                                        </td>
+                                                                    </tr> --}}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="row no-gutters">
+                                                                @foreach ($inventory->pictures as $key => $media)
+                                                                    <div class="col-md-12 col-lg-6">
+                                                                        <div class="card">
+                                                                            <img src="{{ $media->getUrl() }}"
+                                                                                class="card-img-top car-photos"
+                                                                                alt="{{ $inventory->brand_name ?? '' }}">
+                                                                        </div>
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

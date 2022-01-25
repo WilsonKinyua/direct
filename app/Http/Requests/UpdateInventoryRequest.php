@@ -17,7 +17,48 @@ class UpdateInventoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'vehicle' => [
+            'brand_name' => [
+                'string',
+                'required',
+            ],
+            'make' => [
+                'string',
+                'required',
+            ],
+            'model' => [
+                'string',
+                'required',
+            ],
+            'manufacture_year' => [
+                'string',
+                'required',
+            ],
+            'registration_year' => [
+                'string',
+            ],
+            'transmiss' => [
+                'string',
+            ],
+            'milage' => [
+                'string',
+                'required',
+            ],
+            'body_type' => [
+                'string',
+                'required',
+            ],
+            'no_of_doors' => [
+                'string',
+                'required',
+            ],
+            'price' => [
+                'string',
+                'required',
+            ],
+            'engine_size' => [
+                'string',
+            ],
+            'fuel' => [
                 'string',
                 'required',
             ],
@@ -25,10 +66,9 @@ class UpdateInventoryRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'transmission' => [
-                'string',
-                'required',
-            ],
+            // 'description' => [
+            //     'longText',
+            // ],
             'interior_color' => [
                 'string',
                 'nullable',
@@ -39,11 +79,11 @@ class UpdateInventoryRequest extends FormRequest
             ],
             'pictures' => [
                 'array',
-                'required',
+                // 'required',
             ],
-            'pictures.*' => [
-                'required',
-            ],
+            // 'pictures.*' => [
+            //     'required',
+            // ],
         ];
     }
 }
