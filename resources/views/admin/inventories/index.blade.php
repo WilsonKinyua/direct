@@ -105,10 +105,9 @@
                                                                         @endcan
                                                                             <br>
                                                                         @can('inventory_edit')
-                                                                            <a class="btn btn-xs btn-info" href="">
+                                                                            <a class="btn btn-xs btn-info" href="{{ route('admin.inventories.edit', $inventory->id) }}">
                                                                                 {{ trans('global.edit') }}
                                                                             </a>
-                                                                            {{-- {{ route('admin.inventories.edit', $inventory->id) }} --}}
                                                                         @endcan
                                                                             <br>
                                                                         @can('inventory_delete')
@@ -128,7 +127,16 @@
                                                                         @endcan
 
                                                                     </td>
-
+                                                                    {{-- <td>
+                                                                        <a href="edit_stock.html"
+                                                                            class="btn btn-primary btn-xs">
+                                                                            <i class="fa fa-pencil"></i>
+                                                                        </a>
+                                                                        <a href="javasctipt().html"
+                                                                            class="btn btn-danger btn-xs">
+                                                                            <i class="fa fa-trash-o "></i>
+                                                                        </a>
+                                                                    </td> --}}
                                                                 </tr>
                                                             @endforeach
                                                         </tbody>
