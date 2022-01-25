@@ -27,11 +27,24 @@ class Inventory extends Model implements HasMedia
     ];
 
     protected $fillable = [
-        'vehicle',
+        'showroom_id',
+        'brand_name',
+        'make',
+        'model',
+        'manufacture_year',
+        'registration_year', //
+        'transmission', //
+        // 'condition', //
+        'milage',
         'engine_type',
-        'transmission',
+        'body_type',
         'interior_color',
         'exterior_color',
+        'no_of_doors',
+        'price',
+        'engine_size', //
+        'fuel',
+        'description', //
         'created_at',
         'updated_at',
         'deleted_at',
@@ -58,5 +71,10 @@ class Inventory extends Model implements HasMedia
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function showroom()
+    {
+        return $this->belongsTo(Showroom::class);
     }
 }

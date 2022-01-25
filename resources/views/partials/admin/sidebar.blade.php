@@ -162,23 +162,30 @@
                 {{-- ========================================== superadmin access end ==================================== --}}
                 {{-- ========================================== showroomadmin access start ==================================== --}}
                 @can('showroom_admin_access')
-                    <li class="nav-item">
+                    <li
+                        class="nav-item {{ request()->is('admin/inventories*') ? 'active open' : '' }} {{ request()->is('admin/inventories/create*') ? 'active open' : '' }}">
                         <a href="#" class="nav-link nav-toggle"> <i class="material-icons">business</i>
                             <span class="title">Inventory</span> <span class="arrow"></span>
                         </a>
                         <ul class="sub-menu">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link ">
-                                    <i class="fa fa-list"></i>
-                                    <span class="title">All Inventory</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link ">
-                                    <i class="fa fa-plus-circle"></i>
-                                    <span class="title">Add Inventory</span>
-                                </a>
-                            </li>
+                            @can('inventory_access')
+                                <li
+                                    class="nav-item {{ request()->is('admin/inventories') || request()->is('admin/inventories/*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.inventories.index') }}" class="nav-link ">
+                                        <i class="fa fa-list"></i>
+                                        <span class="title">All Inventory</span>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('inventory_create')
+                                <li
+                                    class="nav-item {{ request()->is('admin/inventories/create') || request()->is('admin/inventories/create*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.inventories.create') }}" class="nav-link ">
+                                        <i class="fa fa-plus-circle"></i>
+                                        <span class="title">Add Inventory</span>
+                                    </a>
+                                </li>
+                            @endcan
                         </ul>
                     </li>
                     <li class="nav-item">

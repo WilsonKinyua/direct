@@ -9,7 +9,7 @@
                         <div class="page-title">Showrooms Records</div>
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
-                        <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="index.html">Home</a>&nbsp;<i
+                        <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="{{ route('admin.home')}}">Home</a>&nbsp;<i
                                 class="fa fa-angle-right"></i>
                         </li>
                         <li><a class="parent-item" href="#">Showrooms</a>&nbsp;<i class="fa fa-angle-right"></i>
@@ -28,12 +28,6 @@
                                         <div class="card">
                                             <div class="card-head">
                                                 <header></header>
-                                                {{-- <div class="tools">
-                                                    <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
-                                                    <a class="t-collapse btn-color fa fa-chevron-down"
-                                                        href="javascript:;"></a>
-                                                    <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
-                                                </div> --}}
                                             </div>
                                             <div class="card-body ">
                                                 <div class="row">

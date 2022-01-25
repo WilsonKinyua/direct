@@ -100,12 +100,32 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 23,
-                'title' => 'superadmin_management_access',
+                'title' => 'superadmin_management_access', // added by superadmin
             ],
             [
                 'id'    => 24,
-                'title' => 'showroom_admin_access',
-            ]
+                'title' => 'showroom_admin_access', // added by showroomadmin
+            ],
+            [
+                'id'    => 25,
+                'title' => 'inventory_create',
+            ],
+            [
+                'id'    => 26,
+                'title' => 'inventory_edit',
+            ],
+            [
+                'id'    => 27,
+                'title' => 'inventory_show',
+            ],
+            [
+                'id'    => 28,
+                'title' => 'inventory_delete',
+            ],
+            [
+                'id'    => 29,
+                'title' => 'inventory_access',
+            ],
         ];
 
         Permission::insert($permissions);

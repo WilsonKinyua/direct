@@ -12,6 +12,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Str;
 
 class InventoryController extends Controller
 {
@@ -35,7 +36,16 @@ class InventoryController extends Controller
 
     public function store(StoreInventoryRequest $request)
     {
+        // get current logged in user
+        $user = auth()->user();
+        if ($user->showroom) {
+            $showroom_id = $user->showroom->id;
+        } else {
+            return redirect()->route('admin.inventories.create')->with('error', 'You need to have a showroom before you can create an inventory. Contact your administrator.');
+        }
         $inventory = Inventory::create($request->all());
+        $inventory->ref_id = Str::random(6);
+        $inventory->save();
 
         foreach ($request->input('pictures', []) as $file) {
             $inventory->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('pictures');
@@ -44,8 +54,7 @@ class InventoryController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $inventory->id]);
         }
-
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.inventories.index')->with('success', 'Inventory created successfully.');
     }
 
     public function edit(Inventory $inventory)

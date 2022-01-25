@@ -23,6 +23,9 @@
     <!--bootstrap -->
     <link href="{{ asset('admin-assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"
         type="text/css" />
+    <!-- data tables -->
+	<link href="{{ asset('admin-assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css')}}" rel="stylesheet"
+    type="text/css" />
     <link href="{{ asset('admin-assets/plugins/summernote/summernote.css') }}" rel="stylesheet">
     <!-- Material Design Lite CSS -->
     <link rel="stylesheet" href="{{ asset('admin-assets/plugins/material/material.min.css') }}">
