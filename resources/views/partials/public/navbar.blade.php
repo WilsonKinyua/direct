@@ -18,7 +18,7 @@
                     <img src="{{ asset('images/black-logo.png') }}" class="black-logo" alt="image">
                 </a>
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
-                    <ul class="navbar-nav m-auto">
+                    <ul class="navbar-nav m-auto text-uppercase">
                         <li class="nav-item">
                             <a href="{{ route('public.home') }}"
                                 class="nav-link {{ request()->is('/') ? 'active' : '' }}">
@@ -44,19 +44,24 @@
                                 Auction
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link">
                                 How we work
                             </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> --}}
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link">
                                 Terms & Condition
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                Contact Us
+                                Contacts
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link">
+                                Login
                             </a>
                         </li>
                     </ul>

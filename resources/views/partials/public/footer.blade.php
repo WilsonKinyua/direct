@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="newsletter-share-link">
-                        <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+                        <a href="#" target="_blank"><i class='fa-facebook'></i></a>
                         <a href="#" target="_blank"><i class='bx bx-camera'></i></a>
                         <a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
                         <a href="#" target="_blank"><i class='bx bxl-pinterest-alt'></i></a>
@@ -37,7 +37,7 @@
                 <div class="single-footer-widget">
                     <div class="logo-widget">
                         <a href="/">
-                            <img src="assets/images/white-logo.png" alt="image">
+                            <img src="images/white-logo.png" alt="image">
                         </a>
                     </div>
                     <p>Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt
@@ -99,63 +99,63 @@
                     <ul class="instagram-list">
                         <li>
                             <div class="box">
-                                <img src="assets/images/instagram/instagram-1.jpg" alt="image">
+                                <img src="images/instagram/instagram-1.jpg" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="assets/images/instagram/instagram-2.jpg" alt="image">
+                                <img src="images/instagram/instagram-2.jpg" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="assets/images/instagram/instagram-3.jpg" alt="image">
+                                <img src="images/instagram/instagram-3.jpg" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="assets/images/instagram/instagram-4.jpg" alt="image">
+                                <img src="images/instagram/instagram-4.jpg" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="assets/images/instagram/instagram-5.jpg" alt="image">
+                                <img src="images/instagram/instagram-5.jpg" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="assets/images/instagram/instagram-6.jpg" alt="image">
+                                <img src="images/instagram/instagram-6.jpg" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="assets/images/instagram/instagram-7.jpg" alt="image">
+                                <img src="images/instagram/instagram-7.jpg" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="assets/images/instagram/instagram-8.jpg" alt="image">
+                                <img src="images/instagram/instagram-8.jpg" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="assets/images/instagram/instagram-9.jpg" alt="image">
+                                <img src="images/instagram/instagram-9.jpg" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
