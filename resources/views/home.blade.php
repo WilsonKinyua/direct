@@ -7,7 +7,7 @@
                 <div class="page-bar">
                     <div class="page-title-breadcrumb">
                         <div class=" pull-left">
-                            <div class="page-title">Welcome back, <span
+                            <div class="page-title"><span
                                     class="text-primary">{{ Auth::user()->name ?? 'Admin' }} </span></div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="state-overview">
-                    <div class="row">
+                    <div class="row text-uppercase">
                         <div class="col-lg-3 col-sm-6">
                             <a href="">
                                 <div class="overview-panel yellow">
@@ -41,7 +41,7 @@
                                         <i class="fa fa-cab"></i>
                                     </div>
                                     <div class="value white">
-                                        <p class="sbold addr-font-h1" data-counter="counterup" data-value="14">0</p>
+                                        <p class="sbold addr-font-h1" data-counter="counterup" data-value="0">0</p>
                                         <p>Vehicles</p>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                                         <i class="fa fa-times-circle-o"></i>
                                     </div>
                                     <div class="value white">
-                                        <p class="sbold addr-font-h1" data-counter="counterup" data-value="48">0</p>
+                                        <p class="sbold addr-font-h1" data-counter="counterup" data-value="0">0</p>
                                         <p>Auctioneers</p>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                                         <i class="fa fa-money"></i>
                                     </div>
                                     <div class="value white">
-                                        <p class="sbold addr-font-h1" data-counter="counterup" data-value="3421">0</p>
+                                        <p class="sbold addr-font-h1" data-counter="counterup" data-value="0">0</p>
                                         <p>Sold Vehicles</p>
                                     </div>
                                 </div>
@@ -161,7 +161,7 @@
                 <div class="page-bar">
                     <div class="page-title-breadcrumb">
                         <div class=" pull-left">
-                            <div class="page-title">Welcome back, <span class="text-primary">
+                            <div class="page-title"><span class="text-primary">
                                     {{ Auth::user()->showroom->name ?? Auth::user()->name }}
                                 </span>
                             </div>
@@ -175,7 +175,7 @@
                     </div>
                 </div>
                 <div class="state-overview">
-                    <div class="row">
+                    <div class="row text-uppercase">
                         <div class="col-lg-3 col-sm-6">
                             <div class="overview-panel purple">
                                 <div class="symbol">
@@ -194,7 +194,7 @@
                                     <i class="fa fa-cab"></i>
                                 </div>
                                 <div class="value white">
-                                    <p class="sbold addr-font-h1" data-counter="counterup" data-value="14">0</p>
+                                    <p class="sbold addr-font-h1" data-counter="counterup" data-value="0">0</p>
                                     <p>Sold Vehicles</p>
                                 </div>
                             </div>
@@ -205,7 +205,7 @@
                                     <i class="fa fa-times-circle-o"></i>
                                 </div>
                                 <div class="value white">
-                                    <p class="sbold addr-font-h1" data-counter="counterup" data-value="48">0</p>
+                                    <p class="sbold addr-font-h1" data-counter="counterup" data-value="0">0</p>
                                     <p>Sold Out</p>
                                 </div>
                             </div>
@@ -216,8 +216,8 @@
                                     <i class="fa fa-money"></i>
                                 </div>
                                 <div class="value white">
-                                    <p class="sbold addr-font-h1" data-counter="counterup" data-value="3421">0</p>
-                                    <p>January Sales (Ksh )</p>
+                                    <p class="sbold addr-font-h1" data-counter="counterup" data-value="0">0</p>
+                                    <p>Sales in shilling</p>
                                 </div>
                             </div>
                         </div>
