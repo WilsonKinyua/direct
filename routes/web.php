@@ -1,6 +1,11 @@
 <?php
 
-Route::redirect('/', '/login');
+// Public routes
+Route::get('/', 'HomePageController@index')->name('public.home');
+Route::get('/local-stock', 'LocalStockController@index')->name('local.stock');
+
+
+// admin home route
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
