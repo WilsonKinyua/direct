@@ -101,6 +101,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
+                <h5 class="modal-title">Register Showroom</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -112,7 +113,7 @@
                 <form action="{{ route('showroom.register') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Name: <span
+                        <label for="recipient-name" class="col-form-label">Showroom Name: <span
                                 class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="recipient-name" name="name">
                     </div>
