@@ -21,8 +21,8 @@ class InventoryController extends Controller
     public function index()
     {
         abort_if(Gate::denies('inventory_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        if (!(auth()->user()->showroom->id)) {
+        $showroom_id = auth()->user()->showroom->id;
+        if (!$showroom_id) {
             return redirect()->route('admin.inventories.index')->with('error', 'You must create a showroom before adding inventory');
         }
         $inventories = Inventory::where('showroom_id', auth()->user()->showroom->id)->with(['media'])->get();
