@@ -1,6 +1,6 @@
 @extends('layouts.public.home')
 @section('title')
-Welcome to Direct.co.ke - Homepage
+    Welcome to Direct.co.ke - Homepage
 @endsection
 @section('content')
     <div class="main-banner-with-category">
@@ -154,28 +154,39 @@ Welcome to Direct.co.ke - Homepage
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-car-ranking">
-                        <div class="car-ranking-image">
-                            <a href="showrooms-details.html"><img src="images/showrooms/1.png" alt="image"></a>
-                            <div class="icon verified-icon">
-                                <a href="showrooms-details.html">
-                                    <i class="fa fa-badge-check"></i>
-                                </a>
+                @if (count($showrooms) > 0)
+                    @foreach ($showrooms as $showroom)
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="single-car-ranking">
+                                <div class="car-ranking-image">
+                                    <a href="#">
+                                        @if ($showroom->logo)
+                                            <img src="{{ $showroom->logo->getUrl() }}"
+                                                alt="{{ $showroom->name ?? '' }}">
+                                        @else
+                                            <img src="{{ asset('images/no-image.jpg') }}"
+                                                alt="{{ $showroom->name ?? '' }}">
+                                        @endif
+                                    </a>
+                                    <div class="icon verified-icon">
+                                        <a href="#">
+                                            <i class="fa fa-badge-check"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="car-ranking-content">
+                                    <h4>
+                                        <a href="#">{{ $showroom->name ?? '' }}</a>
+                                    </h4>
+                                    <p><b><i class="fa fa-map-marker-alt"></i></b> {{ $showroom->location ?? '' }}</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="car-ranking-content">
-                            <h4>
-                                <a href="showrooms-details.html">LOTA AUTOMOTIVE LIMITED</a>
-                            </h4>
-                            <p><b><i class="fa fa-map-marker-alt"></i></b> Fourth Parklands Ave, Nairobi Kenya</p>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>
-
 
     <section class="featured-cars-area bg-161c2d pt-100 pb-70">
         <div class="container">
@@ -187,8 +198,7 @@ Welcome to Direct.co.ke - Homepage
                 <div class="col-lg-3 col-md-6 offset-lg-0 offset-md-3">
                     <div class="single-featured-cars-box">
                         <div class="box-image">
-                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-7.jpg"
-                                    alt="image"></a>
+                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-7.jpg" alt="image"></a>
                             <div class="icon">
                                 <a href="car-details.html">
                                     <i class="flaticon-gallery"> 5</i>
@@ -205,8 +215,7 @@ Welcome to Direct.co.ke - Homepage
                     </div>
                     <div class="single-featured-cars-box">
                         <div class="box-image">
-                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-8.jpg"
-                                    alt="image"></a>
+                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-8.jpg" alt="image"></a>
                             <div class="icon">
                                 <a href="car-details.html">
                                     <i class="flaticon-gallery"> 4</i>
@@ -225,8 +234,7 @@ Welcome to Direct.co.ke - Homepage
                 <div class="col-lg-6">
                     <div class="single-featured-cars-box">
                         <div class="box-image">
-                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-9.jpg"
-                                    alt="image"></a>
+                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-9.jpg" alt="image"></a>
                             <div class="icon">
                                 <a href="car-details.html">
                                     <i class="flaticon-gallery"> 6</i>
@@ -245,8 +253,7 @@ Welcome to Direct.co.ke - Homepage
                 <div class="col-lg-3 col-md-6 offset-lg-0 offset-md-3">
                     <div class="single-featured-cars-box">
                         <div class="box-image">
-                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-10.jpg"
-                                    alt="image"></a>
+                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-10.jpg" alt="image"></a>
                             <div class="icon">
                                 <a href="car-details.html">
                                     <i class="flaticon-gallery"> 9</i>
@@ -263,8 +270,7 @@ Welcome to Direct.co.ke - Homepage
                     </div>
                     <div class="single-featured-cars-box">
                         <div class="box-image">
-                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-11.jpg"
-                                    alt="image"></a>
+                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-11.jpg" alt="image"></a>
                             <div class="icon">
                                 <a href="car-details.html">
                                     <i class="flaticon-gallery"> 2</i>
@@ -299,8 +305,7 @@ Welcome to Direct.co.ke - Homepage
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-car-ranking">
                         <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-1.jpg"
-                                    alt="image"></a>
+                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-1.jpg" alt="image"></a>
                             <div class="icon">
                                 <a href="car-details.html">
                                     <i class="flaticon-gallery"> 5</i>
@@ -319,8 +324,7 @@ Welcome to Direct.co.ke - Homepage
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-car-ranking">
                         <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-2.jpg"
-                                    alt="image"></a>
+                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-2.jpg" alt="image"></a>
                             <div class="icon">
                                 <a href="car-details.html">
                                     <i class="flaticon-gallery"> 3</i>
@@ -339,8 +343,7 @@ Welcome to Direct.co.ke - Homepage
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-car-ranking">
                         <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-3.jpg"
-                                    alt="image"></a>
+                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-3.jpg" alt="image"></a>
                             <div class="icon">
                                 <a href="car-details.html">
                                     <i class="flaticon-gallery"> 4</i>
@@ -359,8 +362,7 @@ Welcome to Direct.co.ke - Homepage
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-car-ranking">
                         <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-4.jpg"
-                                    alt="image"></a>
+                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-4.jpg" alt="image"></a>
                             <div class="icon">
                                 <a href="car-details.html">
                                     <i class="flaticon-gallery"> 2</i>
@@ -381,8 +383,7 @@ Welcome to Direct.co.ke - Homepage
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-car-ranking">
                         <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-1.jpg"
-                                    alt="image"></a>
+                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-1.jpg" alt="image"></a>
                             <div class="icon">
                                 <a href="car-details.html">
                                     <i class="flaticon-gallery"> 5</i>
@@ -401,8 +402,7 @@ Welcome to Direct.co.ke - Homepage
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-car-ranking">
                         <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-2.jpg"
-                                    alt="image"></a>
+                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-2.jpg" alt="image"></a>
                             <div class="icon">
                                 <a href="car-details.html">
                                     <i class="flaticon-gallery"> 3</i>
@@ -421,8 +421,7 @@ Welcome to Direct.co.ke - Homepage
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-car-ranking">
                         <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-3.jpg"
-                                    alt="image"></a>
+                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-3.jpg" alt="image"></a>
                             <div class="icon">
                                 <a href="car-details.html">
                                     <i class="flaticon-gallery"> 4</i>
@@ -441,8 +440,7 @@ Welcome to Direct.co.ke - Homepage
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-car-ranking">
                         <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-4.jpg"
-                                    alt="image"></a>
+                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-4.jpg" alt="image"></a>
                             <div class="icon">
                                 <a href="car-details.html">
                                     <i class="flaticon-gallery"> 2</i>

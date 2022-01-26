@@ -26,7 +26,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('local.stock') }}" class="nav-link">
+                            <a href="{{ route('local.stock') }}"
+                                class="nav-link {{ request()->is('local-stock') }}">
                                 Local stock
                             </a>
 
@@ -97,7 +98,7 @@
 {{-- register showroom modal --}}
 <div class="modal fade" id="registerShowroomModal" tabindex="-1" aria-labelledby="registerShowroomModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -108,23 +109,34 @@
                         Fill in all the input fields to register showroom **
                     </small>
                 </p>
-                <form>
+                <form action="{{ route('showroom.register') }}" method="POST">
+                    @csrf
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Your Name: <span
+                        <label for="recipient-name" class="col-form-label">Name: <span
                                 class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="recipient-name">
+                        <input type="text" class="form-control" id="recipient-name" name="name">
                     </div>
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Showroom Name: <span
+                        <label for="recipient-name" class="col-form-label">Phone: <span
                                 class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="recipient-name">
+                        <input type="number" class="form-control" id="recipient-name" name="phone_number">
                     </div>
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Email: <span
                                 class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="recipient-name">
+                        <input type="email" class="form-control" id="recipient-name" name="email">
                     </div>
-                    <button type="button" class="btn btn-danger">Submit Showroom</button>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Location: <span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="recipient-name" name="location">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Password: <span
+                                class="text-danger">*</span></label>
+                        <input type="password" class="form-control" id="recipient-name" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-danger">Submit Showroom</button>
                 </form>
             </div>
         </div>

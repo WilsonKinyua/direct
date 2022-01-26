@@ -17,6 +17,7 @@ Route::get('/home', function () {
 // activate showroom account
 Route::get('/showroom/activate/{token}', 'Admin\ShowroomController@activateShowroomAdminAccount')->name('showroom.activate');
 Route::post('/showroom/account/password', 'Admin\ShowroomController@updateShowroomAdminAccountPassword')->name('showroom.account.password');
+Route::post('/showroom/register', 'HomePageController@registerShowroom')->name('showroom.register');
 
 Auth::routes(['register' => false]);
 
