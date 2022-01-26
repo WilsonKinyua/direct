@@ -198,9 +198,9 @@
                 <div class="col-lg-3 col-md-6 offset-lg-0 offset-md-3">
                     <div class="single-featured-cars-box">
                         <div class="box-image">
-                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-7.jpg" alt="image"></a>
+                            <a href="#"><img src="images/featured-cars/featured-cars-7.jpg" alt="image"></a>
                             <div class="icon">
-                                <a href="car-details.html">
+                                <a href="#">
                                     <i class="flaticon-gallery"> 5</i>
                                 </a>
                             </div>
@@ -208,16 +208,16 @@
                         <div class="box-content">
                             <div class="tag">Ksh. 3,010,000</div>
                             <h3>
-                                <a href="car-details.html">2021 VOLVO XC60</a>
+                                <a href="#">2021 VOLVO XC60</a>
                             </h3>
                             <p><b>MILEAGES</b> 4 Miles, Orland Park</p>
                         </div>
                     </div>
                     <div class="single-featured-cars-box">
                         <div class="box-image">
-                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-8.jpg" alt="image"></a>
+                            <a href="#"><img src="images/featured-cars/featured-cars-8.jpg" alt="image"></a>
                             <div class="icon">
-                                <a href="car-details.html">
+                                <a href="#">
                                     <i class="flaticon-gallery"> 4</i>
                                 </a>
                             </div>
@@ -225,7 +225,7 @@
                         <div class="box-content">
                             <div class="tag">Ksh. 5,510,000</div>
                             <h3>
-                                <a href="car-details.html">2021 TOYOTA RAV4</a>
+                                <a href="#">2021 TOYOTA RAV4</a>
                             </h3>
                             <p><b>MILEAGES</b> 5 Miles, Orland Park</p>
                         </div>
@@ -234,9 +234,9 @@
                 <div class="col-lg-6">
                     <div class="single-featured-cars-box">
                         <div class="box-image">
-                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-9.jpg" alt="image"></a>
+                            <a href="#"><img src="images/featured-cars/featured-cars-9.jpg" alt="image"></a>
                             <div class="icon">
-                                <a href="car-details.html">
+                                <a href="#">
                                     <i class="flaticon-gallery"> 6</i>
                                 </a>
                             </div>
@@ -244,7 +244,7 @@
                         <div class="box-content">
                             <div class="tag">Ksh. 9,910,000</div>
                             <h3>
-                                <a href="car-details.html">2021 MAZDA CX-30</a>
+                                <a href="#">2021 MAZDA CX-30</a>
                             </h3>
                             <p><b>MILEAGES</b> 5 Miles, Willoughby Hills OH</p>
                         </div>
@@ -253,9 +253,9 @@
                 <div class="col-lg-3 col-md-6 offset-lg-0 offset-md-3">
                     <div class="single-featured-cars-box">
                         <div class="box-image">
-                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-10.jpg" alt="image"></a>
+                            <a href="#"><img src="images/featured-cars/featured-cars-10.jpg" alt="image"></a>
                             <div class="icon">
-                                <a href="car-details.html">
+                                <a href="#">
                                     <i class="flaticon-gallery"> 9</i>
                                 </a>
                             </div>
@@ -263,16 +263,16 @@
                         <div class="box-content">
                             <div class="tag">Ksh. 4,510,000</div>
                             <h3>
-                                <a href="car-details.html">2021 NISSAN CX-10</a>
+                                <a href="#">2021 NISSAN CX-10</a>
                             </h3>
                             <p><b>MILEAGES</b> 7 Miles, Orland Park</p>
                         </div>
                     </div>
                     <div class="single-featured-cars-box">
                         <div class="box-image">
-                            <a href="car-details.html"><img src="images/featured-cars/featured-cars-11.jpg" alt="image"></a>
+                            <a href="#"><img src="images/featured-cars/featured-cars-11.jpg" alt="image"></a>
                             <div class="icon">
-                                <a href="car-details.html">
+                                <a href="#">
                                     <i class="flaticon-gallery"> 2</i>
                                 </a>
                             </div>
@@ -280,7 +280,7 @@
                         <div class="box-content">
                             <div class="tag">Ksh. 6,510,000</div>
                             <h3>
-                                <a href="car-details.html">2021 VOLVO XC10</a>
+                                <a href="#">2021 VOLVO XC10</a>
                             </h3>
                             <p><b>MILEAGES</b> 6 Miles, Ramsey, NJ</p>
                         </div>
@@ -295,167 +295,47 @@
                 <h2>TOP CAR LISTING</h2>
                 <p>Look at the best cars in the ranking</p>
                 <div class="section-btn">
-                    <a href="./all-vehicles.html" class="default-btn">
+                    <a href="#" class="default-btn">
                         View All
                         <span></span>
                     </a>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-car-ranking">
-                        <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-1.jpg" alt="image"></a>
-                            <div class="icon">
-                                <a href="car-details.html">
-                                    <i class="flaticon-gallery"> 5</i>
-                                </a>
+                @if (count($inventories) > 0)
+                    @foreach ($inventories as $inventory)
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="single-car-ranking">
+                                <div class="car-ranking-image">
+                                    <a href="#">
+                                        @if ($inventory->pictures != null)
+                                            @foreach ($inventory->pictures->take(1) as $key => $media)
+                                                <img src="{{ $media->getUrl() }}"
+                                                    alt="{{ $inventory->brand_name ?? '' }}">
+                                            @endforeach
+                                        @else
+                                            <img src="images/car-ranking/car-ranking-1.jpg"
+                                                alt="{{ $inventory->brand_name ?? '' }}">
+                                        @endif
+
+                                    </a>
+                                    <div class="icon">
+                                        <a href="#">
+                                            <i class="flaticon-gallery"> 5</i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="car-ranking-content">
+                                    <div class="tag">Ksh. 2,510,000</div>
+                                    <h3>
+                                        <a href="#">2021 MAZDA CX-30</a>
+                                    </h3>
+                                    <p><b>MILEAGES</b> 3 Miles, Orland Park</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="car-ranking-content">
-                            <div class="tag">Ksh. 2,510,000</div>
-                            <h3>
-                                <a href="car-details.html">2021 MAZDA CX-30</a>
-                            </h3>
-                            <p><b>MILEAGES</b> 3 Miles, Orland Park</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-car-ranking">
-                        <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-2.jpg" alt="image"></a>
-                            <div class="icon">
-                                <a href="car-details.html">
-                                    <i class="flaticon-gallery"> 3</i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="car-ranking-content">
-                            <div class="tag">Ksh. 4,910,000</div>
-                            <h3>
-                                <a href="car-details.html">2021 SUBARU XC-60</a>
-                            </h3>
-                            <p><b>MILEAGES</b> 7 Miles, Blauvelt, NY</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-car-ranking">
-                        <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-3.jpg" alt="image"></a>
-                            <div class="icon">
-                                <a href="car-details.html">
-                                    <i class="flaticon-gallery"> 4</i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="car-ranking-content">
-                            <div class="tag">Ksh. 5,510,000</div>
-                            <h3>
-                                <a href="car-details.html">2021 NISSAN XX-50</a>
-                            </h3>
-                            <p><b>MILEAGES</b> 2 Miles, Blauvelt, NY</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-car-ranking">
-                        <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-4.jpg" alt="image"></a>
-                            <div class="icon">
-                                <a href="car-details.html">
-                                    <i class="flaticon-gallery"> 2</i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="car-ranking-content">
-                            <div class="tag">Ksh. 7,510,000</div>
-                            <h3>
-                                <a href="car-details.html">2021 KIA SOUL XC 60</a>
-                            </h3>
-                            <p><b>MILEAGES</b> 9 Miles, Bardonia</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-car-ranking">
-                        <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-1.jpg" alt="image"></a>
-                            <div class="icon">
-                                <a href="car-details.html">
-                                    <i class="flaticon-gallery"> 5</i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="car-ranking-content">
-                            <div class="tag">Ksh. 2,510,000</div>
-                            <h3>
-                                <a href="car-details.html">2021 MAZDA CX-30</a>
-                            </h3>
-                            <p><b>MILEAGES</b> 3 Miles, Orland Park</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-car-ranking">
-                        <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-2.jpg" alt="image"></a>
-                            <div class="icon">
-                                <a href="car-details.html">
-                                    <i class="flaticon-gallery"> 3</i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="car-ranking-content">
-                            <div class="tag">Ksh. 4,910,000</div>
-                            <h3>
-                                <a href="car-details.html">2021 SUBARU XC-60</a>
-                            </h3>
-                            <p><b>MILEAGES</b> 7 Miles, Blauvelt, NY</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-car-ranking">
-                        <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-3.jpg" alt="image"></a>
-                            <div class="icon">
-                                <a href="car-details.html">
-                                    <i class="flaticon-gallery"> 4</i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="car-ranking-content">
-                            <div class="tag">Ksh. 5,510,000</div>
-                            <h3>
-                                <a href="car-details.html">2021 NISSAN XX-50</a>
-                            </h3>
-                            <p><b>MILEAGES</b> 2 Miles, Blauvelt, NY</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-car-ranking">
-                        <div class="car-ranking-image">
-                            <a href="car-details.html"><img src="images/car-ranking/car-ranking-4.jpg" alt="image"></a>
-                            <div class="icon">
-                                <a href="car-details.html">
-                                    <i class="flaticon-gallery"> 2</i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="car-ranking-content">
-                            <div class="tag">Ksh. 7,510,000</div>
-                            <h3>
-                                <a href="car-details.html">2021 KIA SOUL XC 60</a>
-                            </h3>
-                            <p><b>MILEAGES</b> 9 Miles, Bardonia</p>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>
@@ -643,10 +523,10 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="single-blog">
-                        <a href="car-details.html"><img src="images/blog/blog-1.jpg" alt="image"></a>
+                        <a href="#"><img src="images/blog/blog-1.jpg" alt="image"></a>
                         <div class="blog-content">
                             <h3>
-                                <a href="car-details.html">LEXUS XYZ</a>
+                                <a href="#">LEXUS XYZ</a>
                             </h3>
                             <ul class="post-meta">
                                 <li>
@@ -664,10 +544,10 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="single-blog">
-                        <a href="car-details.html"><img src="images/blog/blog-2.jpg" alt="image"></a>
+                        <a href="#"><img src="images/blog/blog-2.jpg" alt="image"></a>
                         <div class="blog-content">
                             <h3>
-                                <a href="car-details.html"> SPORTS CAR</a>
+                                <a href="#"> SPORTS CAR</a>
                             </h3>
                             <ul class="post-meta">
                                 <li>
@@ -685,10 +565,10 @@
                 </div>
                 <div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3">
                     <div class="single-blog">
-                        <a href="car-details.html"><img src="images/blog/blog-3.jpg" alt="image"></a>
+                        <a href="#"><img src="images/blog/blog-3.jpg" alt="image"></a>
                         <div class="blog-content">
                             <h3>
-                                <a href="car-details.html">VOLVO PRADO</a>
+                                <a href="#">VOLVO PRADO</a>
                             </h3>
                             <ul class="post-meta">
                                 <li>

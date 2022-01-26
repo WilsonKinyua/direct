@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inventory;
 use App\Models\Showroom;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,7 +12,8 @@ class HomePageController extends Controller
     public function index()
     {
         $showrooms = Showroom::limit(4)->get();
-        return view('public.home', compact('showrooms'));
+        $inventories = Inventory::limit(8)->get();
+        return view('public.home', compact('showrooms', 'inventories'));
     }
 
     public function localStock()

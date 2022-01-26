@@ -22,7 +22,12 @@ class InventoryController extends Controller
     {
         abort_if(Gate::denies('inventory_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $inventories = Inventory::with(['media'])->get();
+        if (!(auth()->user()->showroom->id)) {
+            return redirect()->route('admin.inventories.index')->with('error', 'You must create a showroom before adding inventory');
+        }
+        $inventories = Inventory::where('showroom_id', auth()->user()->showroom->id)->with(['media'])->get();
+
+        // $inventories = Inventory::with(['media'])->get();
 
         return view('admin.inventories.index', compact('inventories'));
     }
@@ -45,6 +50,7 @@ class InventoryController extends Controller
         }
         $inventory = Inventory::create($request->all());
         $inventory->ref_id = Str::random(6);
+        // $inventory->showroom_id = $showroom_id;
         $inventory->save();
 
         foreach ($request->input('pictures', []) as $file) {
