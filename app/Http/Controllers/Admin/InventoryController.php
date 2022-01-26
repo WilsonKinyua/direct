@@ -25,7 +25,7 @@ class InventoryController extends Controller
         if (!$showroom_id) {
             return redirect()->route('admin.inventories.index')->with('error', 'You must create a showroom before adding inventory');
         }
-        $inventories = Inventory::where('showroom_id', auth()->user()->showroom->id)->with(['media'])->get();
+        $inventories = Inventory::where('showroom_id', $showroom_id)->with(['media'])->get();
 
         // $inventories = Inventory::with(['media'])->get();
 

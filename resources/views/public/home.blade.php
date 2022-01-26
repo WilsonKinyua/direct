@@ -307,30 +307,26 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="single-car-ranking">
                                 <div class="car-ranking-image">
-                                    <a href="#">
-                                        @if ($inventory->pictures != null)
+                                    @if ($inventory->pictures != null)
+                                        <a href="#">
                                             @foreach ($inventory->pictures->take(1) as $key => $media)
                                                 <img src="{{ $media->getUrl() }}"
                                                     alt="{{ $inventory->brand_name ?? '' }}">
                                             @endforeach
-                                        @else
-                                            <img src="images/car-ranking/car-ranking-1.jpg"
-                                                alt="{{ $inventory->brand_name ?? '' }}">
-                                        @endif
-
-                                    </a>
-                                    <div class="icon">
-                                        <a href="#">
-                                            <i class="flaticon-gallery"> 5</i>
                                         </a>
-                                    </div>
+                                        <div class="icon">
+                                            <a href="#">
+                                                <i class="flaticon-gallery"> {{ count($inventory->pictures) }}</i>
+                                            </a>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="car-ranking-content">
-                                    <div class="tag">Ksh. 2,510,000</div>
+                                    <div class="tag">Ksh. {{ number_format($inventory->price ?? '00') }}</div>
                                     <h3>
-                                        <a href="#">2021 MAZDA CX-30</a>
+                                        <a href="#">{{ $inventory->brand_name ?? '' }}</a>
                                     </h3>
-                                    <p><b>MILEAGES</b> 3 Miles, Orland Park</p>
+                                    <p><b>MILEAGES</b> {{ $inventory->milage ?? '' }}</p>
                                 </div>
                             </div>
                         </div>
