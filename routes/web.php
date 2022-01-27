@@ -1,14 +1,14 @@
 <?php
 
 // Public routes
-Route::get('/',function(){
-    return redirect()->route('login');
-});
-// Route::get('/', 'HomePageController@index')->name('public.home');
-// Route::get('/local-stock', 'LocalStockController@index')->name('local.stock');
-// Route::get('/vehicle/{vehicle}', 'HomePageController@carDetails')->name('vehicle.details');
-// Route::get('/showroom/{showroom}', 'ShowroomDetailsController@index')->name('showroom.details');
-// Route::get('showrooms', 'HomePageController@showroomList')->name('showrooms.list');
+// Route::get('/',function(){
+//     return redirect()->route('login');
+// });
+Route::get('/', 'HomePageController@index')->name('public.home');
+Route::get('/local-stock', 'LocalStockController@index')->name('local.stock');
+Route::get('/vehicle/{vehicle}', 'HomePageController@carDetails')->name('vehicle.details');
+Route::get('/showroom/{showroom}', 'ShowroomDetailsController@index')->name('showroom.details');
+Route::get('showrooms', 'HomePageController@showroomList')->name('showrooms.list');
 
 
 // admin home route
