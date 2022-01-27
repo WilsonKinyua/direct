@@ -36,8 +36,8 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="single-footer-widget">
                     <div class="logo-widget">
-                        <a href="/">
-                            <img src="images/white-logo.png" alt="image">
+                        <a href="{{ route('public.home')}}">
+                            <img src="{{ asset('images/white-logo.png')}}" alt="image">
                         </a>
                     </div>
                     <p>Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt

@@ -159,7 +159,7 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="single-car-ranking">
                                 <div class="car-ranking-image">
-                                    <a href="#">
+                                    <a href="{{ route('showroom.details', $showroom->slug)}}">
                                         @if ($showroom->logo)
                                             <img src="{{ $showroom->logo->getUrl() }}"
                                                 alt="{{ $showroom->name ?? '' }}">
@@ -169,14 +169,14 @@
                                         @endif
                                     </a>
                                     <div class="icon verified-icon">
-                                        <a href="#">
+                                        <a href="{{ route('showroom.details', $showroom->slug)}}">
                                             <i class="fa fa-badge-check"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="car-ranking-content">
                                     <h4>
-                                        <a href="#">{{ $showroom->name ?? '' }}</a>
+                                        <a href="{{ route('showroom.details', $showroom->slug)}}">{{ $showroom->name ?? '' }}</a>
                                     </h4>
                                     <p><b><i class="fa fa-map-marker-alt"></i></b> {{ $showroom->location ?? '' }}</p>
                                 </div>

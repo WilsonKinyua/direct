@@ -3,6 +3,7 @@
 // Public routes
 Route::get('/', 'HomePageController@index')->name('public.home');
 Route::get('/local-stock', 'LocalStockController@index')->name('local.stock');
+Route::get('/showroom/{showroom}', 'ShowroomDetailsController@index')->name('showroom.details');
 
 
 // admin home route

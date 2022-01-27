@@ -34,6 +34,7 @@ class Showroom extends Model implements HasMedia
         'phone_number',
         'email',
         'web_url',
+        'slug',
         'admin_name',
         'admin_email',
     ];
