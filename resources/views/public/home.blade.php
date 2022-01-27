@@ -147,7 +147,7 @@
                 <h2>FEATURED SHOWROOMS</h2>
                 <p>Look at the best cars in the ranking</p>
                 <div class="section-btn">
-                    <a href="#" class="default-btn">
+                    <a href="{{ route('showrooms.list') }}" class="default-btn">
                         View All
                         <span></span>
                     </a>
@@ -159,7 +159,7 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="single-car-ranking">
                                 <div class="car-ranking-image">
-                                    <a href="{{ route('showroom.details', $showroom->slug)}}">
+                                    <a href="{{ route('showroom.details', $showroom->slug) }}">
                                         @if ($showroom->logo)
                                             <img src="{{ $showroom->logo->getUrl() }}"
                                                 alt="{{ $showroom->name ?? '' }}">
@@ -169,14 +169,15 @@
                                         @endif
                                     </a>
                                     <div class="icon verified-icon">
-                                        <a href="{{ route('showroom.details', $showroom->slug)}}">
+                                        <a href="{{ route('showroom.details', $showroom->slug) }}">
                                             <i class="fa fa-badge-check"></i>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="car-ranking-content">
                                     <h4>
-                                        <a href="{{ route('showroom.details', $showroom->slug)}}">{{ $showroom->name ?? '' }}</a>
+                                        <a
+                                            href="{{ route('showroom.details', $showroom->slug) }}">{{ $showroom->name ?? '' }}</a>
                                     </h4>
                                     <p><b><i class="fa fa-map-marker-alt"></i></b> {{ $showroom->location ?? '' }}</p>
                                 </div>
@@ -308,23 +309,24 @@
                             <div class="single-car-ranking">
                                 <div class="car-ranking-image">
                                     @if ($inventory->pictures != null)
-                                        <a href="#">
+                                        <a href="{{ route('vehicle.details', $inventory->slug) }}">
                                             @foreach ($inventory->pictures->take(1) as $key => $media)
                                                 <img src="{{ $media->getUrl() }}"
                                                     alt="{{ $inventory->brand_name ?? '' }}">
                                             @endforeach
                                         </a>
                                         <div class="icon">
-                                            <a href="#">
+                                            <a href="{{ route('vehicle.details', $inventory->slug) }}">
                                                 <i class="flaticon-gallery"> {{ count($inventory->pictures) }}</i>
                                             </a>
                                         </div>
                                     @endif
                                 </div>
                                 <div class="car-ranking-content">
-                                    <div class="tag">Ksh. {{ number_format($inventory->price ?? '00') }}</div>
+                                    <div class="tag">Ksh. {{ number_format($inventory->price ?? '00') }}
+                                    </div>
                                     <h3>
-                                        <a href="#">{{ $inventory->brand_name ?? '' }}</a>
+                                        <a href="{{ route('vehicle.details', $inventory->slug) }}">{{ $inventory->brand_name ?? '' }}</a>
                                     </h3>
                                     <p><b>MILEAGES</b> {{ $inventory->milage ?? '' }}</p>
                                 </div>

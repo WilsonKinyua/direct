@@ -50,7 +50,13 @@ class InventoryController extends Controller
         }
         $inventory = Inventory::create($request->all());
         $inventory->ref_id = Str::random(6);
-        // $inventory->showroom_id = $showroom_id;
+        $inventory->slug = Str::slug($inventory->brand_name, '-');
+        $slug = $inventory->slug;
+        $count = Inventory::where('slug', 'LIKE', $slug . '%')->count();
+        if ($count > 0) {
+            $inventory->slug = $slug . '-' . Str::slug($inventory->model, '-');
+        }
+        // $showroom->update();
         $inventory->save();
 
         foreach ($request->input('pictures', []) as $file) {

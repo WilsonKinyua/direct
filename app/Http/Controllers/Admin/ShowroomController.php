@@ -44,11 +44,10 @@ class ShowroomController extends Controller
         $showroom = Showroom::create($request->all());
         $showroom->token = Str::random(60);
         $showroom->slug = Str::slug($showroom->name, '-');
-        // check if slug is unique and if not, add showroom location to slug
         $slug = $showroom->slug;
         $count = Showroom::where('slug', 'LIKE', $slug . '%')->count();
         if ($count > 0) {
-            $showroom->slug = $slug . '-' . $showroom->location;
+            $showroom->slug = $slug . '-' . Str::slug($showroom->location, '-');
         }
         $showroom->update();
 

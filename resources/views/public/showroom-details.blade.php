@@ -101,7 +101,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="single-car-ranking text-center">
                                     <div class="car-ranking-image">
-                                        <a href="car-details.html">
+                                        <a href="{{ route('vehicle.details', $inventory->slug) }}">
                                             @if ($inventory->pictures != null)
                                                 @foreach ($inventory->pictures->take(1) as $key => $media)
                                                     <img src="{{ $media->getUrl() }}"
@@ -111,7 +111,7 @@
                                         </a>
                                     </div>
                                     <div class="car-ranking-content">
-                                        <a href="car-details.html">
+                                        <a href="{{ route('vehicle.details', $inventory->slug) }}">
                                             <p class="text-bold">
                                                 <h5>{{ $inventory->brand_name ?? '' }}</h5>
                                             </p>

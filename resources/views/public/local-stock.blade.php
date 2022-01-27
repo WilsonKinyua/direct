@@ -29,14 +29,14 @@
                             <div class="single-car-ranking">
                                 <div class="car-ranking-image">
                                     @if ($inventory->pictures != null)
-                                        <a href="#">
+                                        <a href="{{ route('vehicle.details', $inventory->slug) }}">
                                             @foreach ($inventory->pictures->take(1) as $key => $media)
                                                 <img src="{{ $media->getUrl() }}"
                                                     alt="{{ $inventory->brand_name ?? '' }}">
                                             @endforeach
                                         </a>
                                         <div class="icon">
-                                            <a href="#">
+                                            <a href="{{ route('vehicle.details', $inventory->slug) }}">
                                                 <i class="flaticon-gallery"> {{ count($inventory->pictures) }}</i>
                                             </a>
                                         </div>
@@ -45,7 +45,7 @@
                                 <div class="car-ranking-content">
                                     <div class="tag">Ksh. {{ number_format($inventory->price ?? '00') }}</div>
                                     <h3>
-                                        <a href="#">{{ $inventory->brand_name ?? '' }}</a>
+                                        <a href="{{ route('vehicle.details', $inventory->slug) }}">{{ $inventory->brand_name ?? '' }}</a>
                                     </h3>
                                     <p><b>MILEAGES</b> {{ $inventory->milage ?? '' }}</p>
                                 </div>

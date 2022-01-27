@@ -50,4 +50,19 @@ class HomePageController extends Controller
         }
         return redirect()->route('login')->with('message', 'Showroom registered successfully. Please login to continue');
     }
+
+    public function showroomList()
+    {
+        $showrooms = Showroom::all();
+        return view('public.showroom-list', compact('showrooms'));
+    }
+
+    public function carDetails($slug)
+    {
+        $inventory = Inventory::where('slug', $slug)->first();
+        if (!$inventory) {
+            abort(404);
+        }
+        return view('public.car-details', compact('inventory'));
+    }
 }

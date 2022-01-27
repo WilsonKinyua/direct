@@ -29,6 +29,7 @@ class Inventory extends Model implements HasMedia
     protected $fillable = [
         'showroom_id',
         'brand_name',
+        'slug',
         'make',
         'model',
         'manufacture_year',

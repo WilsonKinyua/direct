@@ -4774,6 +4774,7 @@ blockquote p,
 .car-details-gallery .car-details-main .slick-slide img {
     width: 100%;
     border-radius: 5px;
+    height: 100%;
 }
 .car-details-gallery .slick-slide {
     outline: 0 !important;
@@ -4790,6 +4791,7 @@ blockquote p,
 .car-details-gallery .car-details-preview .slick-slide img {
     width: 100%;
     border-radius: 5px;
+    height: 100px;
 }
 .car-details-gallery .car-details-preview .slick-prev,
 .car-details-gallery .car-details-preview .slick-next {

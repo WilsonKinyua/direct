@@ -18,7 +18,7 @@
                     <img src="{{ asset('images/black-logo.png') }}" class="black-logo" alt="image">
                 </a>
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
-                    <ul class="navbar-nav m-auto text-uppercase">
+                    <ul class="navbar-nav m-auto text-capitalize">
                         <li class="nav-item">
                             <a href="{{ route('public.home') }}"
                                 class="nav-link {{ request()->is('/') ? 'active' : '' }}">
@@ -33,7 +33,7 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('showrooms.list') }}" class="nav-link {{ request()->is('showrooms/') }}">
                                 Showrooms
                             </a>
 

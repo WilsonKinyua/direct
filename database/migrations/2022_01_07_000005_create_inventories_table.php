@@ -14,7 +14,7 @@ class CreateInventoriesTable extends Migration
             $table->string('brand_name');
             $table->string('make');
             $table->string('model');
-            // $table->string('condition');
+            $table->longText('slug')->nullable();
             $table->string('manufacture_year');
             $table->string('registration_year')->nullable();
             $table->string('transmission')->nullable();
