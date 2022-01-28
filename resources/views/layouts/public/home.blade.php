@@ -202,6 +202,33 @@
             toastr.error("{{ session()->get('error') }}");
         @endif
     </script>
+
+    {{-- whatsapp icon --}}
+    <!-- GetButton.io widget
+        -->
+    <script type="text/javascript">
+        (function() {
+            var options = {
+                whatsapp: "+254 738 444444", // WhatsApp number
+                call_to_action: "Chat with us!", // Call to action
+                position: "left", // Position may be 'right' or 'left'
+                pre_filled_message: "Hi, I'm messaging from your website direct.co.ke", // WhatsApp pre-filled message
+            };
+            var proto = document.location.protocol,
+                host = "getbutton.io",
+                url = proto + "//static." + host;
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function() {
+                WhWidgetSendButton.init(host, proto, options);
+            };
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+    <!-- /GetButton.io widget -->
 </body>
 
 </html>
