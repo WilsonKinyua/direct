@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Traits\MediaUploadingTrait;
+// use App\Http\Controllers\Traits\MediaUploadingTrait;
+use App\Http\Controllers\Traits\MediaUploadingWatermarkTrait;
 use App\Http\Requests\MassDestroyInventoryRequest;
 use App\Http\Requests\StoreInventoryRequest;
 use App\Http\Requests\UpdateInventoryRequest;
@@ -16,7 +17,7 @@ use Illuminate\Support\Str;
 
 class InventoryController extends Controller
 {
-    use MediaUploadingTrait;
+    use MediaUploadingWatermarkTrait;
 
     public function index()
     {
@@ -41,6 +42,7 @@ class InventoryController extends Controller
 
     public function store(StoreInventoryRequest $request)
     {
+        // dd($request->all());
         // get current logged in user
         $user = auth()->user();
         if ($user->showroom) {
@@ -62,7 +64,6 @@ class InventoryController extends Controller
         foreach ($request->input('pictures', []) as $file) {
             $inventory->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('pictures');
         }
-
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $inventory->id]);
         }
