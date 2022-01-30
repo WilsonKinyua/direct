@@ -1,4 +1,55 @@
 @extends('layouts.main-admin')
+@section('css')
+    <script type="text/javascript" src="http://www.carqueryapi.com/js/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.carqueryapi.com/js/carquery.0.3.4.js"></script>
+    <script type="text/javascript">
+        $(document).ready(
+            function() {
+                var carquery = new CarQuery();
+                carquery.init();
+                carquery.setFilters({
+                    sold_in_us: true
+                });
+                carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
+                $('#cq-show-data').click(function() {
+                    carquery.populateCarData('car-model-data');
+                });
+                carquery.initMakeModelTrimList('make-list', 'model-list', 'trim-list', 'trim-data-list');
+                carquery.year_select_min = 1990;
+                carquery.year_select_max = new Date().getFullYear();
+                var searchArgs =
+                    ({
+                        body_id: "cq-body",
+                        default_search_text: "Keyword Search",
+                        doors_id: "cq-doors",
+                        drive_id: "cq-drive",
+                        engine_position_id: "cq-engine-position",
+                        engine_type_id: "cq-engine-type",
+                        fuel_type_id: "cq-fuel-type",
+                        min_cylinders_id: "cq-min-cylinders",
+                        min_mpg_hwy_id: "cq-min-mpg-hwy",
+                        min_power_id: "cq-min-power",
+                        min_top_speed_id: "cq-min-top-speed",
+                        min_torque_id: "cq-min-torque",
+                        min_weight_id: "cq-min-weight",
+                        min_year_id: "cq-min-year",
+                        max_cylinders_id: "cq-max-cylinders",
+                        max_mpg_hwy_id: "cq-max-mpg-hwy",
+                        max_power_id: "cq-max-power",
+                        max_top_speed_id: "cq-max-top-speed",
+                        max_weight_id: "cq-max-weight",
+                        max_year_id: "cq-max-year",
+                        search_controls_id: "cq-search-controls",
+                        search_input_id: "cq-search-input",
+                        search_results_id: "cq-search-results",
+                        search_result_id: "cq-search-result",
+                        seats_id: "cq-seats",
+                        sold_in_us_id: "cq-sold-in-us"
+                    });
+                carquery.initSearchInterface(searchArgs);
+            });
+    </script>
+@endsection
 @section('content')
     <div class="page-content-wrapper">
         <div class="page-content">
@@ -26,6 +77,21 @@
                         <form method="POST" action="{{ route('admin.inventories.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body row">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label for="">Manufacture Year: <span class="text-danger">*</span></label>
+                                        <select name="manufacture_year" id="car-years" class="form-control"
+                                            required></select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Make: <span class="text-danger">*</span></label>
+                                        <select name="make" id="car-makes" class="form-control" required></select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Model: <span class="text-danger">*</span></label>
+                                        <select name="model" id="car-models" class="form-control" required></select>
+                                    </div>
+                                </div>
                                 <div class="col-lg-4 p-t-20">
                                     <input type="hidden" name="showroom_id"
                                         value="{{ Auth::user()->showroom->id ?? '' }}">
@@ -36,7 +102,7 @@
                                         <label class="mdl-textfield__label">Brand Name:</label>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 p-t-20">
+                                {{-- <div class="col-lg-4 p-t-20">
                                     <div
                                         class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                         <input class="mdl-textfield__input" type="text" id="txtCourseCode" name="make"
@@ -51,16 +117,16 @@
                                             required>
                                         <label class="mdl-textfield__label">Model:</label>
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="col-lg-4 p-t-20">
+                                {{-- <div class="col-lg-4 p-t-20">
                                     <div
                                         class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                         <input class="mdl-textfield__input" type="number" id="txtCourseCode"
                                             name="manufacture_year" required>
                                         <label class="mdl-textfield__label">Manufacture Year:</label>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-lg-4 p-t-20">
                                     <div
                                         class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
