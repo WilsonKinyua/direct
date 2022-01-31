@@ -132,11 +132,11 @@
                                                             {{ $showroom->created_at->diffForHumans() }}
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="text-inverse"
+                                                            <a href="{{ route('admin.showrooms.edit',$showroom->id) }}" class="text-inverse"
                                                                 title="Edit Showroom" data-bs-toggle="tooltip">
                                                                 <i class="fa fa-edit"></i></a>
                                                             &nbsp; &nbsp;
-                                                            <a href="javascript:void(0)" class="text-danger"
+                                                            <a href="{{ route('admin.showrooms.delete',$showroom->id) }}" class="text-danger"
                                                                 data-bs-toggle="tooltip" title="Delete Showroom"><i
                                                                     class="fa  fa-trash-o"></i></a>
                                                         </td>
