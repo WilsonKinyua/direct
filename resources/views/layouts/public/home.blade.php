@@ -211,7 +211,7 @@
             var options = {
                 whatsapp: "+254 759 090421", // WhatsApp number
                 call_to_action: "Chat with us!", // Call to action
-                position: "left", // Position may be 'right' or 'left'
+                position: "right", // Position may be 'right' or 'left'
                 pre_filled_message: "Hi, I'm messaging from your website direct.co.ke", // WhatsApp pre-filled message
             };
             var proto = document.location.protocol,

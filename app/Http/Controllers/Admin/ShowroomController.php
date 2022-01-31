@@ -78,14 +78,37 @@ class ShowroomController extends Controller
         return view('admin.showrooms.show', compact('showroom', 'inventories'));
     }
 
-    public function edit($id)
+    public function edit(Showroom $showroom)
     {
         abort_if(Gate::denies('superadmin_management_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        if (!$showroom) {
+            return redirect()->route('admin.showrooms.index')->with('error', 'Showroom not found');
+        }
+        $showroom->load('media');
+
+        return view('admin.showrooms.edit', compact('showroom'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Showroom $showroom)
     {
         abort_if(Gate::denies('superadmin_management_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        if (!$showroom) {
+            return redirect()->route('admin.showrooms.index')->with('error', 'Showroom not found');
+        }
+
+        $showroom->update($request->all());
+
+        // check if showroom has logo in the media collection
+        if ($showroom->logo) {
+            $showroom->logo->delete();
+        }
+        if ($request->input('logo', false)) {
+            $showroom->addMedia(storage_path('tmp/uploads/' . basename($request->input('logo'))))->toMediaCollection('logo');
+        }
+
+        return redirect()->route('admin.showrooms.index')->with('success', 'Showroom updated successfully');
     }
 
     public function destroy($id)
