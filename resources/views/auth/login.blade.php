@@ -39,7 +39,7 @@
             style="background-image: url('https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80');">
             <div class="wrap-login100 p-t-30 p-b-50">
                 <span class="login100-form-title p-b-41">
-                     account Login
+                    account Login
                 </span>
                 @if (session('message'))
                     <div class="alert alert-info" role="alert">
@@ -84,12 +84,13 @@
                         <button class="login100-form-btn">
                             {{ trans('global.login') }}
                         </button>
+                        @if (Route::has('password.request'))
+                            <a class="btn btn-link px-5 mt-4" href="{{ route('password.request') }}">
+                                {{ trans('global.forgot_password') }}
+                            </a><br>
+                        @endif
                     </div>
-                    {{-- @if (Route::has('password.request'))
-                    <a class="btn btn-link px-0" href="{{ route('password.request') }}">
-                        {{ trans('global.forgot_password') }}
-                    </a><br>
-                @endif --}}
+
 
                 </form>
             </div>
