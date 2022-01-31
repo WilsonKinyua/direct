@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="newsletter-share-link">
-                        <a href="#" target="_blank"><i class='fa-facebook'></i></a>
+                        <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
                         <a href="#" target="_blank"><i class='bx bx-camera'></i></a>
                         <a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
                         <a href="#" target="_blank"><i class='bx bxl-pinterest-alt'></i></a>
