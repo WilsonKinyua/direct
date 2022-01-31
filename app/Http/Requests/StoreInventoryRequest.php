@@ -79,11 +79,11 @@ class StoreInventoryRequest extends FormRequest
             ],
             'pictures' => [
                 'array',
-                // 'required',
+                'required',
             ],
-            // 'pictures.*' => [
-            //     'required',
-            // ],
+            'pictures.*' => [
+                'required',
+            ],
         ];
     }
 }

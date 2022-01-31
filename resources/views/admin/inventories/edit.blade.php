@@ -29,6 +29,15 @@
                                             <div class="card-head">
                                                 <header>Car Details</header>
                                             </div>
+                                            @if ($errors->count() > 0)
+                                                <div class="alert alert-danger">
+                                                    <ul class="list-unstyled">
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
                                             <form method="POST"
                                                 action="{{ route('admin.inventories.update', [$inventory->id]) }}"
                                                 enctype="multipart/form-data">
@@ -184,7 +193,7 @@
                                                         <div class="mdl-textfield mdl-js-textfield txt-full-width">
                                                             <textarea class="mdl-textfield__input" rows="4" id="text7"
                                                                 name="description">{!! old('description', $inventory->description) !!}
-                                                                    </textarea>
+                                                                        </textarea>
                                                             <label class="mdl-textfield__label" for="text7">Description or
                                                                 any other
                                                                 details:</label>

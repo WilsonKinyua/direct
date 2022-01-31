@@ -74,6 +74,15 @@
                         <div class="card-head">
                             <header>Car Details</header>
                         </div>
+                        @if ($errors->count() > 0)
+                            <div class="alert alert-danger">
+                                <ul class="list-unstyled">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form method="POST" action="{{ route('admin.inventories.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body row">
