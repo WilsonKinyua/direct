@@ -35,6 +35,7 @@ class Showroom extends Model implements HasMedia
         'email',
         'web_url',
         'slug',
+        'status',
         'admin_name',
         'admin_email',
     ];
@@ -60,5 +61,11 @@ class Showroom extends Model implements HasMedia
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    // get all showrooms where status is 1
+    public static function getAllShowrooms()
+    {
+        return self::where('status', 1)->get();
     }
 }

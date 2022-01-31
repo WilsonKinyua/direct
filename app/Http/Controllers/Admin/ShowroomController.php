@@ -191,4 +191,24 @@ class ShowroomController extends Controller
 
         abort(404);
     }
+
+    // update showroom status
+    public function updateShowroomStatus(Showroom $showroom)
+    {
+        abort_if(Gate::denies('superadmin_management_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        if (!$showroom) {
+            return redirect()->route('admin.showrooms.index')->with('error', 'Showroom not found');
+        }
+
+        $showroom->status = $showroom->status == 1 ? 0 : 1;
+        $showroom->save();
+        // update showroom admin user role to showroom admin
+        $showroom_admin = User::where('showroom_id', $showroom->id)->first();
+        if ($showroom_admin) {
+            $showroom_admin->roles()->sync(2);
+        }
+
+        return redirect()->back()->with('success', 'Showroom status updated successfully');
+    }
 }

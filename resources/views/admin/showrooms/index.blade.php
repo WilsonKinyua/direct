@@ -59,6 +59,7 @@
                                                                 <th> Admin Name </th>
                                                                 <th> Admin Email </th>
                                                                 <th> Date Joined </th>
+                                                                <th>Status</th>
                                                                 <th> Action </th>
                                                             </tr>
                                                         </thead>
@@ -104,12 +105,27 @@
                                                                         {{ $showroom->created_at->diffForHumans() }}
                                                                     </td>
                                                                     <td>
-                                                                        <a href="{{ route('admin.showrooms.edit',$showroom->id) }}"
+                                                                        @if ($showroom->status == 1)
+                                                                            <a href="{{ route('admin.showrooms.status', $showroom->id) }}"
+                                                                                title="Click to deactivate"
+                                                                                class="btn btn-success">
+                                                                                <i class="fa fa-check"></i>
+                                                                            </a>
+                                                                        @else
+                                                                            <a href="{{ route('admin.showrooms.status', $showroom->id) }}"
+                                                                                title="Click to activate"
+                                                                                class="btn btn-danger">
+                                                                                <i class="fa fa-times"></i>
+                                                                            </a>
+                                                                        @endif
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="{{ route('admin.showrooms.edit', $showroom->id) }}"
                                                                             class="text-inverse" title="Edit Showroom"
                                                                             data-bs-toggle="tooltip">
                                                                             <i class="fa fa-edit"></i></a>
                                                                         &nbsp; &nbsp;
-                                                                        <a href="{{ route('admin.showrooms.delete',$showroom->id) }}"
+                                                                        <a href="{{ route('admin.showrooms.delete', $showroom->id) }}"
                                                                             class="text-danger" data-bs-toggle="tooltip"
                                                                             title="Delete Showroom"><i
                                                                                 class="fa  fa-trash-o"></i></a>

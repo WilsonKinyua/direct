@@ -25,6 +25,7 @@ class CreateShowroomsTable extends Migration
             $table->char('admin_email');
             $table->longText('slug')->nullable();
             $table->longText('token')->nullable();
+            $table->boolean('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

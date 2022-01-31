@@ -7,8 +7,8 @@
                 <div class="page-bar">
                     <div class="page-title-breadcrumb">
                         <div class=" pull-left">
-                            <div class="page-title"><span
-                                    class="text-primary">{{ Auth::user()->name ?? 'Admin' }} </span></div>
+                            <div class="page-title"><span class="text-primary">{{ Auth::user()->name ?? 'Admin' }} </span>
+                            </div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item"
@@ -99,6 +99,7 @@
                                                     <th> Admin Name </th>
                                                     <th> Admin Email </th>
                                                     <th> Date Joined </th>
+                                                    <th>Status</th>
                                                     <th> Action </th>
                                                 </tr>
                                             </thead>
@@ -106,7 +107,7 @@
                                                 @foreach ($showrooms as $showroom)
                                                     <tr>
                                                         <td>
-                                                            <a href="{{ route('admin.showrooms.show',$showroom->id) }}">
+                                                            <a href="{{ route('admin.showrooms.show', $showroom->id) }}">
                                                                 {{ $showroom->name ?? '' }}
                                                             </a>
                                                         </td>
@@ -132,13 +133,27 @@
                                                             {{ $showroom->created_at->diffForHumans() }}
                                                         </td>
                                                         <td>
-                                                            <a href="{{ route('admin.showrooms.edit',$showroom->id) }}" class="text-inverse"
-                                                                title="Edit Showroom" data-bs-toggle="tooltip">
+                                                            @if ($showroom->status == 1)
+                                                                <a href="{{ route('admin.showrooms.status', $showroom->id) }}" title="Click to deactivate"
+                                                                    class="btn btn-success">
+                                                                    <i class="fa fa-check"></i>
+                                                                </a>
+                                                            @else
+                                                                <a href="{{ route('admin.showrooms.status', $showroom->id) }}" title="Click to activate"
+                                                                    class="btn btn-danger">
+                                                                    <i class="fa fa-times"></i>
+                                                                </a>
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ route('admin.showrooms.edit', $showroom->id) }}"
+                                                                class="text-inverse" title="Edit Showroom"
+                                                                data-bs-toggle="tooltip">
                                                                 <i class="fa fa-edit"></i></a>
                                                             &nbsp; &nbsp;
-                                                            <a href="{{ route('admin.showrooms.delete',$showroom->id) }}" class="text-danger"
-                                                                data-bs-toggle="tooltip" title="Delete Showroom"><i
-                                                                    class="fa  fa-trash-o"></i></a>
+                                                            <a href="{{ route('admin.showrooms.delete', $showroom->id) }}"
+                                                                class="text-danger" data-bs-toggle="tooltip"
+                                                                title="Delete Showroom"><i class="fa  fa-trash-o"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

@@ -6,12 +6,13 @@ use App\Models\Inventory;
 use App\Models\Showroom;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class HomePageController extends Controller
 {
     public function index()
     {
-        $showrooms = Showroom::limit(4)->get();
+        $showrooms = Showroom::where('status', 1)->limit(4)->get();
         $inventories = Inventory::limit(8)->get();
         return view('public.home', compact('showrooms', 'inventories'));
     }
@@ -38,6 +39,7 @@ class HomePageController extends Controller
             $showroom->location = $request->location;
             $showroom->admin_name = $request->name;
             $showroom->admin_email = $request->email;
+            $showroom->slug = Str::slug($request->name, '-');
             $showroom->save();
             // create showroom admin account
             $user = User::create([
@@ -46,7 +48,7 @@ class HomePageController extends Controller
                 'password' => bcrypt($request->password),
                 'showroom_id' => $showroom->id,
             ]);
-            User::findOrFail($user->id)->roles()->sync(2);
+            User::findOrFail($user->id)->roles()->sync(4);
         }
         return redirect()->route('login')->with('message', 'Showroom registered successfully. Please login to continue');
     }

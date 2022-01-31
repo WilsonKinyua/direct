@@ -53,6 +53,17 @@
                                         class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-circle btn-pink">Website</a>
                                     <a target="_blank" href="{{ $showroom->map_link ?? '' }}"
                                         class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-circle btn-pink">Map</a>
+                                    @if ($showroom->status == 1)
+                                        <a
+                                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-circle btn-pink">
+                                            Active
+                                        </a>
+                                    @else
+                                        <a
+                                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-circle btn-pink">
+                                            Inactive
+                                        </a>
+                                    @endif
                                 </div>
                                 <!-- END SIDEBAR BUTTONS -->
                             </div>
