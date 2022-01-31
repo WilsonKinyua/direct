@@ -91,6 +91,27 @@ class ShowroomController extends Controller
     public function destroy($id)
     {
         abort_if(Gate::denies('superadmin_management_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $showroom = Showroom::findOrFail($id);
+        if (!$showroom) {
+            return redirect()->route('admin.showrooms.index')->with('error', 'Showroom not found');
+        }
+        // get all inventories of this showroom and delete them
+        $inventories = Inventory::where('showroom_id', $showroom->id)->get();
+        foreach ($inventories as $inventory) {
+            $inventory->delete();
+        }
+        // get all media of this showroom and delete them
+        // $media = $showroom->getMedia();
+        // foreach ($media as $m) {
+        //     $m->delete();
+        // }
+        // delete all user of this showroom
+        $users = User::where('showroom_id', $showroom->id)->get();
+        foreach ($users as $user) {
+            $user->delete();
+        }
+        $showroom->delete();
+        return redirect()->route('admin.showrooms.index')->with('success', 'Showroom deleted successfully');
     }
 
     public function storeCKEditorImages(Request $request)

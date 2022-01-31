@@ -35,6 +35,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('showrooms/media', 'ShowroomController@storeMedia')->name('showrooms.storeMedia');
     Route::post('showrooms/ckmedia', 'ShowroomController@storeCKEditorImages')->name('showrooms.storeCKEditorImages');
     Route::resource('showrooms', 'ShowroomController');
+    Route::get("showroom/{showroom}/delete", 'ShowroomController@destroy')->name('showrooms.delete');
 
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions

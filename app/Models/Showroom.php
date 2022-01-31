@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Illuminate\Database\Eloquent\SoftDeletes;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Showroom extends Model implements HasMedia
 {
     use InteractsWithMedia;
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     public $table = 'showrooms';
 

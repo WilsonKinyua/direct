@@ -41,7 +41,7 @@
                             <div class="col-lg-6 col-md-12">
                                 <div class="desc-information">
                                     <h3>LISTING INFORMATION</h3>
-                                    <ul class="info-list">
+                                    <ul class="info-list text-capitalize">
                                         @if ($inventory->milage != null)
                                             <li>Mileage</li>
                                             <li><span>: {{ $inventory->milage }}</span></li>
