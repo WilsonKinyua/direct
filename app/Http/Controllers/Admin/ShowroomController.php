@@ -99,7 +99,13 @@ class ShowroomController extends Controller
         }
 
         $showroom->update($request->all());
-
+        // get showroom admin user details and update the showroom admin email in user table
+        $showroom_admin = User::where('showroom_id', $showroom->id)->first();
+        if ($showroom_admin) {
+            $showroom_admin->email = $request->admin_email;
+            $showroom_admin->name = $request->admin_name;
+            $showroom_admin->save();
+        }
         // check if showroom has logo in the media collection
         if ($showroom->logo) {
             $showroom->logo->delete();
