@@ -42,6 +42,7 @@ class ShowroomController extends Controller
         abort_if(Gate::denies('superadmin_management_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $showroom = Showroom::create($request->all());
+        $showroom->status  = 1;
         $showroom->token = Str::random(60);
         $showroom->slug = Str::slug($showroom->name, '-');
         $slug = $showroom->slug;
