@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <section class="car-details-area ptb-100 mt-5">
-        <div class="container">
+        <div class="m-5">
             <div class="row">
                 {{-- <div class="col-md-12 text-center mb-4">
                     <h1 class="display-4 text-bold">
