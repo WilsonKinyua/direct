@@ -173,31 +173,34 @@
                     <div class="desc-seller-info">
                         <h3>SELLER INFO</h3>
                         <div class="info-list">
-                            <h4>CHARLES A. ENGLE</h4>
-                            <p>770 Emeral Dreams Drive Grand Ridge, IL 61325</p>
+                            <h4>{{ $inventory->showroom->name ?? '' }}</h4>
+                            <p>{{ $inventory->showroom->location ?? '' }}</p>
                         </div>
                         <div class="info-list">
                             <h4>EMAIL</h4>
-                            <a href=""><span>email@email.com</span></a>
+                            <a
+                                href="malto:{{ $inventory->showroom->email ?? '' }}"><span>{{ $inventory->showroom->email ?? '' }}</span></a>
                         </div>
                         <div class="info-list">
                             <h4>PHONE</h4>
-                            <a href="tel:815-249-4756">815-249-4756</a>
+                            <a
+                                href="tel:{{ $inventory->showroom->phone_number ?? '' }}">{{ $inventory->showroom->phone_number ?? '' }}</a>
                         </div>
                         <div class="info-list">
                             <h4>WEBSITE</h4>
-                            <a href="#">www.mundauto.com</a>
+                            <a target="_blank"
+                                href="{{ $inventory->showroom->web_url ?? '' }}">{{ $inventory->showroom->web_url ?? '' }}</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 col-md-12">
-                    <div class="map">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.870619622822!2d39.68260681447532!3d-4.046808946006873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012f227d1296f%3A0xd7c3bf3a7679513f!2sRatna%20Square%20Shopping%20Centre!5e0!3m2!1sen!2sbd!4v1638947980769!5m2!1sen!2sbd"
-                            style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                @if ($inventory->showroom->map_link != null)
+                    <div class="col-lg-8 col-md-12">
+                        <div class="map">
+                            <iframe src="{{ $inventory->showroom->map_link ?? '' }}" style="border:0;" allowfullscreen=""
+                                loading="lazy"></iframe>
+                        </div>
                     </div>
-                </div>
-
+                @endif
             </div>
         </div>
     </section>
