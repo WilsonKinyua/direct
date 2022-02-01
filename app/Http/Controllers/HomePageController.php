@@ -65,6 +65,7 @@ class HomePageController extends Controller
         if (!$inventory) {
             abort(404);
         }
+        
         return view('public.car-details', compact('inventory'));
     }
 }

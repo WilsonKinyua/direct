@@ -15,6 +15,8 @@ class CreateVehicleFeaturesTable extends Migration
     {
         Schema::create('vehicle_features', function (Blueprint $table) {
             $table->id();
+            $table->string("name");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

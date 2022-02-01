@@ -140,20 +140,10 @@
                     <div class="desc-features mt-5 pt-3">
                         <h3>VEHICLE FEATURES</h3>
                         <ul class="info-list">
-                            <li><i class="flaticon-tick"></i> Air Conditioning</li>
-                            <li><i class="flaticon-tick"></i> Alarm System</li>
-                            <li><i class="flaticon-tick"></i> AM/FM Radio</li>
-                            <li><i class="flaticon-tick"></i> Bucket Seating</li>
-                            <li><i class="flaticon-tick"></i> Cruise Control</li>
-                            <li><i class="flaticon-tick"></i> Driver Air Bag</li>
-                            <li><i class="flaticon-tick"></i> Integrated Car Phone</li>
-                            <li><i class="flaticon-tick"></i> Auxiliary Heating</li>
-                            <li><i class="flaticon-tick"></i> Bluetooth</li>
-                            <li><i class="flaticon-tick"></i> CD Player</li>
-                            <li><i class="flaticon-tick"></i> Central Locking</li>
-                            <li><i class="flaticon-tick"></i> Side Mirror</li>
-                            <li><i class="flaticon-tick"></i> Panoramic Roof</li>
-                            <li><i class="flaticon-tick"></i> Particulate Filter</li>
+                            @foreach ($inventory->vehicleFeatures as $id => $feature)
+                                <li><i class="flaticon-tick"></i> {{ $feature->name }}</li>
+                            @endforeach
+
                         </ul>
                     </div>
                 </div>

@@ -78,4 +78,9 @@ class Inventory extends Model implements HasMedia
     {
         return $this->belongsTo(Showroom::class);
     }
+
+    public function vehicleFeatures()
+    {
+        return $this->belongsToMany(VehicleFeatures::class);
+    }
 }

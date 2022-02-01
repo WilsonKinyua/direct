@@ -9,6 +9,7 @@ use App\Http\Requests\MassDestroyInventoryRequest;
 use App\Http\Requests\StoreInventoryRequest;
 use App\Http\Requests\UpdateInventoryRequest;
 use App\Models\Inventory;
+use App\Models\VehicleFeatures;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -36,8 +37,8 @@ class InventoryController extends Controller
     public function create()
     {
         abort_if(Gate::denies('inventory_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        return view('admin.inventories.create');
+        $vehicle_features = VehicleFeatures::all()->pluck('name', 'id');
+        return view('admin.inventories.create', compact('vehicle_features'));
     }
 
     public function store(StoreInventoryRequest $request)
@@ -67,6 +68,9 @@ class InventoryController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $inventory->id]);
         }
+
+        $inventory->vehicleFeatures()->sync($request->input('vehicle_features', []));
+
         return redirect()->route('admin.inventories.index')->with('success', 'Inventory created successfully.');
     }
 

@@ -242,6 +242,20 @@
                                     <span
                                         class="help-block">{{ trans('cruds.inventory.fields.pictures_helper') }}</span>
                                 </div>
+                                <div class="col-lg-12 mt-4">
+                                    <label for="">Vehicle Features:</label>
+                                    {{-- <select id="multiple" class="form-control select2-multiple" multiple>
+                                        <optgroup label="Alaskan/Hawaiian Time Zone">
+                                            <option value="AK">Alaska</option>
+                                            <option value="HI">Hawaii</option>
+                                        </optgroup>
+                                    </select> --}}
+                                    <select class="form-control select2-multiple {{ $errors->has('vehicle_features') ? 'is-invalid' : '' }}" name="vehicle_features[]" id="vehicle_features" multiple required>
+                                        @foreach($vehicle_features as $id => $feature)
+                                            <option value="{{ $id }}" {{ in_array($id, old('vehicle_features', [])) ? 'selected' : '' }}>{{ $feature }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="col-lg-12 p-t-20">
                                     <div class="mdl-textfield mdl-js-textfield txt-full-width">
                                         <textarea class="mdl-textfield__input" rows="4" id="text7"

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\VehicleFeatures;
 use Illuminate\Database\Seeder;
 
 class VehicleFeaturesSeeder extends Seeder
@@ -78,5 +79,11 @@ class VehicleFeaturesSeeder extends Seeder
             'Rear Wiper',
             'Rear Window Defroster',
         ];
+
+        foreach ($features as $feature) {
+            VehicleFeatures::create([
+                'name' => $feature,
+            ]);
+        }
     }
 }
