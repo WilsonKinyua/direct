@@ -120,26 +120,26 @@
                                                     <h5 class="text-danger">Ksh. {{ number_format($inventory->price ?? '00') }}</h5>
                                                 </div>
                                             </div>
-                                            <p class="mt-1">
+                                            <p class="mt-1 text-capitalize">
                                                 <small>
                                                     <i class="fa fa-map"></i>
-                                                    TNL Athi River
+                                                    {{ $inventory->showroom->location ?? '' }}
                                                 </small>
                                             </p>
                                             <div class="d-flex justify-content-between">
                                                 <div>
-                                                    <p>
+                                                    <p class="text-capitalize">
                                                         <small>
                                                             <i class="fa fa-map-marker-alt"></i>
-                                                            TNL Athi River
+                                                            {{ $inventory->showroom->location ?? '' }}
                                                         </small>
                                                     </p>
                                                 </div>
                                                 <div>
-                                                    <p>
+                                                    <p style="margin-left: 10px">
                                                         <small>
                                                             <i class="fa fa-phone"></i>
-                                                            717255460
+                                                            {{ $inventory->showroom->phone_number ?? '' }}
                                                         </small>
                                                     </p>
                                                 </div>
