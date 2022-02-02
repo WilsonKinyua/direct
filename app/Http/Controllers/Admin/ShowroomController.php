@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Events\NewShowroom;
 use App\Http\Requests\ShowroomStoreRequest;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
+use App\Http\Requests\UpdateUserRequest;
 use App\Jobs\SyncMedia;
 use App\Mail\ShowroomAdmin;
 use App\Models\Inventory;
@@ -261,5 +262,18 @@ class ShowroomController extends Controller
         User::findOrFail($user->id)->roles()->sync(2);
 
         return redirect()->route('admin.showrooms.admin.list')->with('success', 'Showroom admin User created successfully');
+    }
+
+    // update showrooms admin
+    public function updateShowroomAdmin(Request $request, User $user)
+    {
+        abort_if(Gate::denies('superadmin_management_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        if (!$user) {
+            return redirect()->route('admin.showrooms.admins')->with('danger', 'No such showroom admin found!');
+        }
+        $user->update($request->all());
+
+        return redirect()->route('admin.showrooms.admin.list')->with('success', 'Showroom admin User updated successfully');
     }
 }

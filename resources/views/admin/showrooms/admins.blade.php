@@ -40,7 +40,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('admin.showrooms.admin.create')}}" method="POST">
+                                            <form action="{{ route('admin.showrooms.admin.create') }}" method="POST">
                                                 @csrf
                                                 <div class="mb-3">
                                                     <label for="name" class="col-form-label">Showroom: <span
@@ -116,9 +116,79 @@
                                                         class="badge badge-info">{{ $user->showroom->name ?? '' }}</span>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary btn-xs">
+                                                    <a data-bs-toggle="modal"
+                                                        data-bs-target="#updateShowroomModal{{ $user->id }}"
+                                                        id="addRow" class="btn btn-primary btn-xs">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
+                                                    {{-- edit showroom admin --}}
+                                                    <div class="modal fade" id="updateShowroomModal{{ $user->id }}"
+                                                        tabindex="-1"
+                                                        aria-labelledby="updateShowroomModal{{ $user->id }}Label"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header tex-white">
+                                                                    <h5 class="modal-title"
+                                                                        id="updateShowroomModal{{ $user->id }}Label">
+                                                                        Add A
+                                                                        Showroom Admin</h5>
+                                                                    <button type="button" class="btn-close text-white"
+                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form
+                                                                        action="{{ route('admin.showrooms.admin.update',[$user->id]) }}"
+                                                                        method="POST">
+                                                                        @method('PUT')
+                                                                        @csrf
+                                                                        <div class="mb-3">
+                                                                            <label for="name"
+                                                                                class="col-form-label">Showroom: <span
+                                                                                    class="text-danger">*</span></label>
+                                                                            <select name="showroom_id" id="showroom_id"
+                                                                                class="form-control">
+                                                                                <option value="">
+                                                                                    Select Showroom
+                                                                                </option>
+                                                                                @foreach ($showrooms as $showroom)
+                                                                                    <option value="{{ $showroom->id }}">
+                                                                                        {{ $showroom->name }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="name" class="col-form-label">Name:
+                                                                                <span
+                                                                                    class="text-danger">*</span></label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="name" name="name" required
+                                                                                value="{{ $user->name ?? '' }}">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="message-text"
+                                                                                class="col-form-label">Email: <span
+                                                                                    class="text-danger">*</span></label>
+                                                                            <input type="email" class="form-control"
+                                                                                id="email" name="email" required
+                                                                                value="{{ $user->email ?? '' }}">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="message-text"
+                                                                                class="col-form-label">Password: <span
+                                                                                    class="text-danger">*</span></label>
+                                                                            <input type="password" class="form-control"
+                                                                                id="password" name="password">
+                                                                        </div>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary">Submit</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- end modal --}}
                                                     <a href="{{ route('admin.showrooms.admin.delete', $user->id) }}"
                                                         class="btn btn-danger btn-xs">
                                                         <i class="fa fa-trash-o "></i>
