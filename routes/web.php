@@ -39,6 +39,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get("showroom/{showroom}/status", 'ShowroomController@updateShowroomStatus')->name('showrooms.status');
     Route::get('showrooms-admins', 'ShowroomController@showroomAdminList')->name('showrooms.admin.list');
     Route::get('showroom-admin/{user}/delete', 'ShowroomController@destroyShowroomAdmin')->name('showrooms.admin.delete');
+    Route::post('showroom-admin/create', 'ShowroomController@createShowroomAdmin')->name('showrooms.admin.create');
 
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions

@@ -221,7 +221,9 @@ class ShowroomController extends Controller
             $query->where('id', 2);
         })->get();
 
-        return view('admin.showrooms.admins', compact('users'));
+        $showrooms = Showroom::all();
+
+        return view('admin.showrooms.admins', compact('users', 'showrooms'));
     }
 
     // delete showrooms admin
@@ -237,5 +239,27 @@ class ShowroomController extends Controller
         // delete user
         $user->delete();
         return redirect()->route('admin.showrooms.admin.list')->with('success', 'Showroom admin User deleted successfully');
+    }
+
+    // create showrooms admin
+    public function createShowroomAdmin(Request $request)
+    {
+        abort_if(Gate::denies('superadmin_management_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $showroom = Showroom::findOrFail($request->showroom_id);
+        if (!$showroom) {
+            return redirect()->route('admin.showrooms.admins')->with('error', 'Showroom not found. Please try again');
+        }
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'showroom_id' => $showroom->id,
+            'password' => bcrypt($request->password),
+        ]);
+
+        User::findOrFail($user->id)->roles()->sync(2);
+
+        return redirect()->route('admin.showrooms.admin.list')->with('success', 'Showroom admin User created successfully');
     }
 }

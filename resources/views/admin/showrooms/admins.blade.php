@@ -22,13 +22,64 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-6">
                                     <div class="btn-group">
-                                        <a href="{{ route('admin.showrooms.create') }}" id="addRow"
+                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal" id="addRow"
                                             class="btn btn-info">
-                                            Add Showrooms<i class="fa fa-plus"></i>
+                                            Add Showroom Admin<i class="fa fa-plus"></i>
                                         </a>
                                     </div>
                                 </div>
                             </div>
+                            {{-- add showroom admin modal --}}
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header tex-white">
+                                            <h5 class="modal-title" id="exampleModalLabel">Add A Showroom Admin</h5>
+                                            <button type="button" class="btn-close text-white" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('admin.showrooms.admin.create')}}" method="POST">
+                                                @csrf
+                                                <div class="mb-3">
+                                                    <label for="name" class="col-form-label">Showroom: <span
+                                                            class="text-danger">*</span></label>
+                                                    <select name="showroom_id" id="showroom_id" class="form-control">
+                                                        <option value="">
+                                                            Select Showroom
+                                                        </option>
+                                                        @foreach ($showrooms as $showroom)
+                                                            <option value="{{ $showroom->id }}">{{ $showroom->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="name" class="col-form-label">Name: <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="name" name="name"
+                                                        required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="message-text" class="col-form-label">Email: <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="email" class="form-control" id="email" name="email"
+                                                        required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="message-text" class="col-form-label">Password: <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="password" class="form-control" id="password"
+                                                        name="password" required>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- end of modal --}}
                             <div class="table-scrollable">
                                 <table
                                     class="table table-striped table-bordered table-hover table-checkable order-column valign-middle"
@@ -84,5 +135,6 @@
             </div>
         </div>
     </div>
+
 
 @endsection

@@ -9238,3 +9238,8 @@ nav-tabs > li {
 .feedBody li.active-feed .feed-user-img:after {
   border-color: #2ed8b6;
 }
+
+
+.modal .modal-content .modal-title, .modal .modal-content .modal-title button {
+    color:white;
+}
