@@ -37,6 +37,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('showrooms', 'ShowroomController');
     Route::get("showroom/{showroom}/delete", 'ShowroomController@destroy')->name('showrooms.delete');
     Route::get("showroom/{showroom}/status", 'ShowroomController@updateShowroomStatus')->name('showrooms.status');
+    Route::get('showrooms-admins', 'ShowroomController@showroomAdminList')->name('showrooms.admin.list');
+    Route::get('showroom-admin/{user}/delete', 'ShowroomController@destroyShowroomAdmin')->name('showrooms.admin.delete');
 
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions

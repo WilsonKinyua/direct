@@ -52,12 +52,14 @@
                                         </a>
                                     </li>
                                 @endcan
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link ">
-                                        <i class="fa fa-plus-circle"></i>
-                                        <span class="title">Showroom Admins</span>
-                                    </a>
-                                </li>
+                                @can('showroom_show')
+                                    <li class="nav-item {{ request()->is('admin/showrooms-admins') || request()->is('admin/showrooms-admins/*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.showrooms.admin.list') }}" class="nav-link ">
+                                            <i class="fa fa-plus-circle"></i>
+                                            <span class="title">Showroom Admins</span>
+                                        </a>
+                                    </li>
+                                @endcan
                             </ul>
                         </li>
                     @endcan

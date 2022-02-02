@@ -212,4 +212,30 @@ class ShowroomController extends Controller
 
         return redirect()->back()->with('success', 'Showroom status updated successfully');
     }
+
+    // showrooms admins
+    public function showroomAdminList()
+    {
+        abort_if(Gate::denies('superadmin_management_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $users = User::whereHas('roles', function ($query) {
+            $query->where('id', 2);
+        })->get();
+
+        return view('admin.showrooms.admins', compact('users'));
+    }
+
+    // delete showrooms admin
+    public function destroyShowroomAdmin(User $user)
+    {
+        abort_if(Gate::denies('superadmin_management_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        if (!$user) {
+            return redirect()->route('admin.showrooms.admins')->with('danger', 'No such showroom admin found!');
+        }
+        // delete user role
+        $user->roles()->detach();
+        // delete user
+        $user->delete();
+        return redirect()->route('admin.showrooms.admin.list')->with('success', 'Showroom admin User deleted successfully');
+    }
 }
