@@ -190,7 +190,7 @@
                             @endcan
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ request()->is('admin/staffs/create*') ? 'active open' : '' }} {{ request()->is('admin/staffs/*') ? 'active open' : '' }}">
                         <a href="#" class="nav-link nav-toggle"> <i class="material-icons">group</i>
                             <span class="title"> Staff</span> <span class="arrow"></span>
                         </a>
@@ -201,8 +201,9 @@
                                     <span class="title">All Staff</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link ">
+                            <li class="nav-item {{ request()->is('admin/staffs/create') || request()->is('admin/staffs/create/*') ? 'active' : '' }}">
+                                <a href="" class="nav-link ">
+                                    {{-- {{ route('admin.staffs.create')}} --}}
                                     <i class="fa fa-user-plus"></i>
                                     <span class="title">Add Staff</span>
                                 </a>
