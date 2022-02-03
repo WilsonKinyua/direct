@@ -87,4 +87,26 @@ class HomePageController extends Controller
         return view('public.showroom-search', compact('showrooms', 'query'));
         // print_r($showrooms);
     }
+
+
+    // advanced search
+    public function advancedSearchQuery(Request $request)
+    {
+        if ($request->year == '' || $request->max_price == '' || $request->make == '') {
+            return redirect()->back()->with('error', 'Please fill all the fields!!');
+        }
+        // print_r($request->all());
+
+        return redirect()->route('advanced.search', ['year' => $request->year, 'make' => $request->make, 'price' => $request->max_price]);
+    }
+
+    // advanced search inventory
+    public function advancedSearch($year, $make, $price)
+    {
+        $inventories = Inventory::where('manufacture_year', $year)
+            ->where('make', $make)
+            ->where('price', '<=', $price)
+            ->get();
+        return view('public.advanced-search', compact('inventories', 'year', 'make', 'price'));
+    }
 }

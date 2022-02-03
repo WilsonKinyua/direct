@@ -14,6 +14,9 @@ Route::get('showrooms', 'HomePageController@showroomList')->name('showrooms.list
 Route::post('/search-showroom', 'HomePageController@SearchQuery')->name('search.query-showroom');
 Route::get('/search/showroom/keyword={query}', 'HomePageController@showroomSearch')->name('showroom.search');
 
+// advanced search
+Route::post('/advanced/search', 'HomePageController@advancedSearchQuery')->name('advanced.search.query');
+Route::get('/advanced-search/year={year}/make={make}/price={price}', 'HomePageController@advancedSearch')->name('advanced.search');
 
 // admin home route
 Route::get('/home', function () {

@@ -45,6 +45,7 @@
         {{ trans('panel.site_title') }} - @yield('title')
     </title>
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+    @yield('css')
 </head>
 
 <body>
@@ -229,6 +230,7 @@
         })();
     </script>
     <!-- /GetButton.io widget -->
+    @yield('js')
 </body>
 
 </html>
