@@ -21,6 +21,9 @@ Route::get('/advanced-search/year={year}/make={make}/price={price}', 'HomePageCo
 // showroom messages
 Route::resource('/showroom-messages', 'ShowroomMessagesController');
 
+// contact us
+Route::resource('/contact-us', 'ContactUsController');
+
 // admin home route
 Route::get('/home', function () {
     if (session('status')) {

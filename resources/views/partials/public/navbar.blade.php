@@ -33,7 +33,8 @@
 
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('showrooms.list') }}" class="nav-link {{ request()->is('showrooms/') }}">
+                            <a href="{{ route('showrooms.list') }}"
+                                class="nav-link {{ request()->is('showrooms/') }}">
                                 Showrooms
                             </a>
 
@@ -55,15 +56,24 @@
                             </a>
                         </li> --}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('contact-us.index') }}" class="nav-link">
                                 Contacts
                             </a>
                         </li>
+                        @if (Auth::check())
+                        <li class="nav-item">
+                            <a href="{{ route('admin.home') }}" class="nav-link">
+                                Dashboard
+                            </a>
+                        </li>
+                        @else
                         <li class="nav-item">
                             <a href="{{ route('login') }}" class="nav-link">
                                 Login
                             </a>
                         </li>
+                        @endif
+
                     </ul>
                     <div class="others-options d-flex align-items-center">
                         <!-- <div class="option-item">
