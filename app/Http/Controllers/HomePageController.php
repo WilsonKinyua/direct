@@ -65,7 +65,26 @@ class HomePageController extends Controller
         if (!$inventory) {
             abort(404);
         }
-        
+
         return view('public.car-details', compact('inventory'));
+    }
+
+    // search query
+    public function SearchQuery(Request $request)
+    {
+        if ($request->search == '') {
+            return redirect()->back()->with('error', 'Please enter a search query');
+        }
+        return redirect()->route('showroom.search', ['query' => $request->search]);
+    }
+
+    // search showroom
+    public function showroomSearch($query)
+    {
+        $showrooms = Showroom::where('name', 'like', '%' . $query . '%')
+            ->orWhere('location', 'like', '%' . $query . '%')
+            ->get();
+        return view('public.showroom-search', compact('showrooms', 'query'));
+        // print_r($showrooms);
     }
 }

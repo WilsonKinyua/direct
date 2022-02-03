@@ -78,12 +78,13 @@
                                         </form>
                                     </div>
                                     <div class="tabs_item">
-                                        <form>
+                                        <form action="{{ route('search.query-showroom')}}" method="POST">
+                                            @csrf
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-6">
                                                     <div class="form-group showrooms-search">
-                                                        <input type="text" class="form-control" name="showrooms-search"
-                                                            placeholder="Search by name or location..." autofocus="off">
+                                                        <input type="text" class="form-control" name="search"
+                                                            placeholder="Search by name or location..." autofocus="off" required >
                                                     </div>
                                                 </div>
                                             </div>

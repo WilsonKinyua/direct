@@ -99,63 +99,63 @@
                     <ul class="instagram-list">
                         <li>
                             <div class="box">
-                                <img src="images/instagram/instagram-1.jpg" alt="image">
+                                <img src="{{ asset('images/instagram/instagram-1.jpg')}}" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="images/instagram/instagram-2.jpg" alt="image">
+                                <img src="{{ asset('images/instagram/instagram-2.jpg')}}" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="images/instagram/instagram-3.jpg" alt="image">
+                                <img src="{{ asset('images/instagram/instagram-3.jpg')}}" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="images/instagram/instagram-4.jpg" alt="image">
+                                <img src="{{ asset('images/instagram/instagram-4.jpg')}}" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="images/instagram/instagram-5.jpg" alt="image">
+                                <img src="{{ asset('images/instagram/instagram-5.jpg')}}" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="images/instagram/instagram-6.jpg" alt="image">
+                                <img src="{{ asset('images/instagram/instagram-6.jpg')}}" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="images/instagram/instagram-7.jpg" alt="image">
+                                <img src="{{ asset('images/instagram/instagram-7.jpg')}}" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="images/instagram/instagram-8.jpg" alt="image">
+                                <img src="{{ asset('images/instagram/instagram-8.jpg')}}" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>
                         </li>
                         <li>
                             <div class="box">
-                                <img src="images/instagram/instagram-9.jpg" alt="image">
+                                <img src="{{ asset('images/instagram/instagram-9.jpg')}}" alt="image">
                                 <i class="bx bxl-instagram"></i>
                                 <a href="#" target="_blank" class="link-btn"></a>
                             </div>

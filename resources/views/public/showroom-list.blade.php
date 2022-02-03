@@ -10,10 +10,12 @@
                 <p>Look at the best showrooms</p>
                 <div class="section-btn widget-area">
                     <div class="widget widget_search vehicle-search">
-                        <form class="search-form">
+                        <form action="{{ route('search.query-showroom') }}" method="POST" class="search-form">
+                            @csrf
                             <label>
                                 <span class="screen-reader-text">Search for:</span>
-                                <input type="search" class="search-field" placeholder="Search...">
+                                <input type="search" class="search-field" placeholder="Search..." name="search"
+                                    value="{{ $query ?? '' }}">
                             </label>
                             <button type="submit">
                                 <i class='bx bx-search-alt'></i>

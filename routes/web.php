@@ -10,6 +10,10 @@ Route::get('/vehicle/{vehicle}', 'HomePageController@carDetails')->name('vehicle
 Route::get('/showroom/{showroom}', 'ShowroomDetailsController@index')->name('showroom.details');
 Route::get('showrooms', 'HomePageController@showroomList')->name('showrooms.list');
 
+// search showroom
+Route::post('/search-showroom', 'HomePageController@SearchQuery')->name('search.query-showroom');
+Route::get('/search/showroom/keyword={query}', 'HomePageController@showroomSearch')->name('showroom.search');
+
 
 // admin home route
 Route::get('/home', function () {
