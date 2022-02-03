@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <section class="car-details-area ptb-100 mt-5">
-        <div class="m-5">
+        <div class="container">
             <div class="row">
                 {{-- <div class="col-md-12 text-center mb-4">
                     <h1 class="display-4 text-bold">
@@ -42,34 +42,34 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="car-details-contact">
                         <h3>CONTACT DEALER</h3>
-                        <form>
+                        <form method="POST" action="">
+                            @csrf
+                            <div class="form-check">
+                                <label class="form-check-label text-danger" for="checkme">** Fill in all the required fields
+                                    **</label>
+                            </div>
                             <div class="form-group">
-                                <label>Your Name</label>
-                                <input type="text" class="form-control">
+                                <label>Your Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="name" required>
                             </div>
                             <div class="form-group">
                                 <label>Your Email</label>
-                                <input type="text" class="form-control">
+                                <input type="email" class="form-control" name="email">
                             </div>
                             <div class="form-group">
-                                <label>Your Phone</label>
-                                <input type="text" class="form-control">
+                                <label>Your Phone <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="phone_number" required>
                             </div>
                             <div class="form-group">
-                                <label>Your Location </label>
-                                <input type="text" class="form-control">
+                                <label>Your Location <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="location" required>
                             </div>
                             <div class="form-group">
-                                <label>Your Message</label>
-                                <textarea name="message" class="form-control"></textarea>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="checkme">
-                                <label class="form-check-label" for="checkme">Send me price drop & new listing alerts
-                                    via email.</label>
+                                <label>Your Message <span class="text-danger">*</span></label>
+                                <textarea name="message" class="form-control" required></textarea>
                             </div>
                             <button type="submit" class="default-btn">
-                                Send Email
+                                Send Message
                                 <span></span>
                             </button>
                         </form>
