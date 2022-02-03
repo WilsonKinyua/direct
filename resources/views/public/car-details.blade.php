@@ -42,12 +42,13 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="car-details-contact">
                         <h3>CONTACT DEALER</h3>
-                        <form method="POST" action="">
+                        <form method="POST" action="{{ route('showroom-messages.store') }}">
                             @csrf
                             <div class="form-check">
                                 <label class="form-check-label text-danger" for="checkme">** Fill in all the required fields
                                     **</label>
                             </div>
+                            <input type="hidden" name="showroom_id" value="{{ $inventory->showroom->id }}">
                             <div class="form-group">
                                 <label>Your Name <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="name" required>

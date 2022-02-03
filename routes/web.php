@@ -18,6 +18,9 @@ Route::get('/search/showroom/keyword={query}', 'HomePageController@showroomSearc
 Route::post('/advanced/search', 'HomePageController@advancedSearchQuery')->name('advanced.search.query');
 Route::get('/advanced-search/year={year}/make={make}/price={price}', 'HomePageController@advancedSearch')->name('advanced.search');
 
+// showroom messages
+Route::resource('/showroom-messages', 'ShowroomMessagesController');
+
 // admin home route
 Route::get('/home', function () {
     if (session('status')) {
