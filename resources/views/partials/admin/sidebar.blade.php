@@ -53,7 +53,8 @@
                                     </li>
                                 @endcan
                                 @can('showroom_show')
-                                    <li class="nav-item {{ request()->is('admin/showrooms-admins') || request()->is('admin/showrooms-admins/*') ? 'active' : '' }}">
+                                    <li
+                                        class="nav-item {{ request()->is('admin/showrooms-admins') || request()->is('admin/showrooms-admins/*') ? 'active' : '' }}">
                                         <a href="{{ route('admin.showrooms.admin.list') }}" class="nav-link ">
                                             <i class="fa fa-plus-circle"></i>
                                             <span class="title">Showroom Admins</span>
@@ -104,14 +105,14 @@
                                         <span class="selected"></span>
                                     </a>
                                 </li>
-                                <li
+                                {{-- <li
                                     class="nav-item {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
                                     <a href="{{ route('admin.roles.index') }}" class="nav-link ">
                                         <i class="fa fa-briefcase"></i>
                                         <span class="title">{{ trans('cruds.role.title') }}</span>
                                         <span class="selected"></span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 {{-- <li
                                     class="nav-item {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
                                     <a href="{{ route('admin.permissions.index') }}" class="nav-link ">
@@ -190,26 +191,34 @@
                             @endcan
                         </ul>
                     </li>
-                    <li class="nav-item {{ request()->is('admin/staffs/create*') ? 'active open' : '' }} {{ request()->is('admin/staffs/*') ? 'active open' : '' }}">
-                        <a href="#" class="nav-link nav-toggle"> <i class="material-icons">group</i>
-                            <span class="title"> Staff</span> <span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link ">
-                                    <i class="fa fa-group"></i>
-                                    <span class="title">All Staff</span>
-                                </a>
-                            </li>
-                            <li class="nav-item {{ request()->is('admin/staffs/create') || request()->is('admin/staffs/create/*') ? 'active' : '' }}">
-                                <a href="" class="nav-link ">
-                                    {{-- {{ route('admin.staffs.create')}} --}}
-                                    <i class="fa fa-user-plus"></i>
-                                    <span class="title">Add Staff</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    @can('user_access')
+                        <li
+                            class="nav-item {{ request()->is('admin/staffs/create*') ? 'active open' : '' }} {{ request()->is('admin/staffs*') ? 'active open' : '' }}">
+                            <a href="#" class="nav-link nav-toggle"> <i class="material-icons">group</i>
+                                <span class="title"> Staff</span> <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                @can('user_access')
+                                    <li
+                                        class="nav-item {{ request()->is('admin/staffs') || request()->is('admin/staffs/*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.staffs.index') }}" class="nav-link ">
+                                            <i class="fa fa-group"></i>
+                                            <span class="title">All Staff</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('user_create')
+                                    <li
+                                        class="nav-item {{ request()->is('admin/staffs/create') || request()->is('admin/staffs/create/*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.staffs.create') }}" class="nav-link ">
+                                            <i class="fa fa-user-plus"></i>
+                                            <span class="title">Add Staff</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                            </ul>
+                        </li>
+                    @endcan
                     <li class="nav-item">
                         <a href="#" class="nav-link nav-toggle">
                             <i class="material-icons">dvr</i>
