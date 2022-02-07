@@ -74,10 +74,108 @@
 
                                                 <td class="">{{ $user->location ?? '' }}</td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary btn-xs">
+                                                    <a class="btn btn-primary btn-xs" data-bs-toggle="modal"
+                                                        data-bs-target="#updateShowroomStaff{{ $user->id }}">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
-                                                    <a href="#" class="btn btn-danger btn-xs">
+                                                    {{-- edit showroom admin --}}
+                                                    <div class="modal fade" id="updateShowroomStaff{{ $user->id }}"
+                                                        tabindex="-1"
+                                                        aria-labelledby="updateShowroomModal{{ $user->id }}Label"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header tex-white">
+                                                                    <h5 class="modal-title"
+                                                                        id="updateShowroomModal{{ $user->id }}Label">
+                                                                        Edit Staff</h5>
+                                                                    <button type="button" class="btn-close text-white"
+                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form
+                                                                        action="{{ route('admin.staffs.update', [$user->id]) }}"
+                                                                        method="POST">
+                                                                        @method('PUT')
+                                                                        @csrf
+                                                                        <div class="p-t-20">
+                                                                            <div
+                                                                                class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                                                                <input class="mdl-textfield__input"
+                                                                                    type="text" id="txtFirstName"
+                                                                                    name="name"
+                                                                                    value="{{ $user->name ?? '' }}">
+                                                                                <label class="mdl-textfield__label">Full
+                                                                                    Name:</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="p-t-20">
+                                                                            <div
+                                                                                class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                                                                <input class="mdl-textfield__input"
+                                                                                    type="text" id="txtLasttName"
+                                                                                    name="location"
+                                                                                    value="{{ $user->location ?? '' }}">
+                                                                                <label
+                                                                                    class="mdl-textfield__label">Location:</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="p-t-20">
+                                                                            <div
+                                                                                class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                                                                <input class="mdl-textfield__input"
+                                                                                    type="email" id="txtemail" name="email"
+                                                                                    value="{{ $user->email ?? '' }}">
+                                                                                <label
+                                                                                    class="mdl-textfield__label">Email:</label>
+                                                                                <span class="mdl-textfield__error">Enter
+                                                                                    Valid Email Address!</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="p-t-20">
+                                                                            <div
+                                                                                class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                                                                <input class="mdl-textfield__input"
+                                                                                    type="text"
+                                                                                    pattern="-?[0-9]*(\.[0-9]+)?" id="text5"
+                                                                                    name="phone_number"
+                                                                                    value="{{ $user->phone_number ?? '' }}">
+                                                                                <label class="mdl-textfield__label"
+                                                                                    for="text5">Mobile Number:</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="p-t-20">
+                                                                            <div class="form-group">
+                                                                                <label>Gender</label>
+                                                                                <select class="form-select" name="gender"
+                                                                                    id="gender">
+                                                                                    <option>--Select Gender --</option>
+                                                                                    <option value="male">Male</option>
+                                                                                    <option value="female">Female</option>
+                                                                                    <option value="other">Other</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="p-t-20">
+                                                                            <div
+                                                                                class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                                                                <input class="mdl-textfield__input"
+                                                                                    type="password" id="password"
+                                                                                    name="password">
+                                                                                <label
+                                                                                    class="mdl-textfield__label">Password:</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary">Update</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- end modal --}}
+                                                    <a href="{{ route('admin.staffs.delete', $user->id) }}"
+                                                        class="btn btn-danger btn-xs">
                                                         <i class="fa fa-trash-o "></i>
                                                     </a>
                                                 </td>

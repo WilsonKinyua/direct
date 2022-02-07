@@ -39,29 +39,22 @@ class StaffController extends Controller
         return redirect()->route('admin.staffs.index')->with('message', 'Staff created successfully.');
     }
 
-
-    public function show($id)
-    {
-        abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        //
-    }
-
-    public function edit($id)
-    {
-        abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        //
-    }
-
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        return redirect()->route('admin.staffs.index')->with('success', 'Staff updated successfully.');
     }
     public function destroy($id)
     {
         abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $user = User::findOrFail($id);
+        if (empty($user)) {
+            return redirect()->route('admin.staffs.index')->with('error', 'Staff not found');
+        }
+        $user->delete();
+        $user->roles()->detach();
 
-        //
+        return redirect()->route('admin.staffs.index')->with('success', 'Staff deleted successfully.');
     }
 }

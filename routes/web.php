@@ -70,6 +70,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // staff
     Route::resource('staffs','StaffController');
+    Route::get('staffs/{staff}/delete', 'StaffController@destroy')->name('staffs.delete');
+    Route::put('staffs/{staff}/update', 'StaffController@update')->name('staffs.update');
 
     // Inventory
     Route::delete('inventories/destroy', 'InventoryController@massDestroy')->name('inventories.massDestroy');
