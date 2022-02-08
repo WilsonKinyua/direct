@@ -57,4 +57,14 @@ class StaffController extends Controller
 
         return redirect()->route('admin.staffs.index')->with('success', 'Staff deleted successfully.');
     }
+
+    public function allStaffs()
+    {
+        abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // all users where role is showroom staff
+        $users = User::whereHas('roles', function ($q) {
+            $q->where('id', '=', Role::where('title', 'Showroom Staff')->first()->id);
+        })->get();
+        return view('admin.staffs.all', compact('users'));
+    }
 }

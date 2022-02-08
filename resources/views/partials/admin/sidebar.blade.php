@@ -91,7 +91,7 @@
                     </li>
                     @can('user_management_access')
                         <li
-                            class="nav-item {{ request()->is('admin/permissions*') ? 'active open' : '' }} {{ request()->is('admin/roles*') ? 'active open' : '' }} {{ request()->is('admin/users*') ? 'active open' : '' }}">
+                            class="nav-item {{ request()->is('admin/permissions*') ? 'active open' : '' }} {{ request()->is('admin/roles*') ? 'active open' : '' }} {{ request()->is('admin/users*') ? 'active open' : '' }} {{ request()->is('admin/showrooms-admins*') ? 'active open' : '' }} {{ request()->is('admin/all/showrooms/staffs*') ? 'active open' : '' }}">
                             <a href="#" class="nav-link nav-toggle"> <i class="material-icons">group</i>
                                 <span class="title">Users</span> <span class="selected"></span>
                                 <span class="arrow open"></span>
@@ -121,14 +121,17 @@
                                         <span class="selected"></span>
                                     </a>
                                 </li> --}}
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link ">
-                                        <i class="fa fa-list"></i>
-                                        <span class="title">Showroom Admins</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link ">
+                                @can('showroom_show')
+                                    <li
+                                        class="nav-item {{ request()->is('admin/showrooms-admins') || request()->is('admin/showrooms-admins/*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.showrooms.admin.list') }}" class="nav-link ">
+                                            <i class="fa fa-list"></i>
+                                            <span class="title">Showroom Admins</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                                <li class="nav-item {{ request()->is('admin/all/showrooms/staffs') || request()->is('admin/all/showrooms/staffs/*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.all.staffs') }}" class="nav-link ">
                                         <i class="fa fa-list"></i>
                                         <span class="title">Showroom Staff</span>
                                     </a>
