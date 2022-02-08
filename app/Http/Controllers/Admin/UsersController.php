@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Traits\MediaUploadingTrait;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyUserRequest;
 use App\Http\Requests\StoreUserRequest;
@@ -14,6 +16,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UsersController extends Controller
 {
+    use MediaUploadingTrait;
+
     public function index()
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -94,6 +98,29 @@ class UsersController extends Controller
     public function updateProfile(Request $request, User $user)
     {
         $user->update($request->all());
+        if ($request->input('avatar', false)) {
+            if (!$user->avatar || $request->input('avatar') !== $user->avatar->file_name) {
+                if ($user->avatar) {
+                    $user->avatar->delete();
+                }
+                $user->addMedia(storage_path('tmp/uploads/' . basename($request->input('avatar'))))->toMediaCollection('avatar');
+            }
+        } elseif ($user->avatar) {
+            $user->avatar->delete();
+        }
+
         return redirect()->back()->with('success', 'Profile updated successfully');
+    }
+
+    public function storeCKEditorImages(Request $request)
+    {
+        abort_if(Gate::denies('user_create') && Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $model         = new User();
+        $model->id     = $request->input('crud_id', 0);
+        $model->exists = true;
+        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+
+        return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
 }

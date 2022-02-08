@@ -11,10 +11,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
     // use SoftDeletes;
+    use InteractsWithMedia;
     use Notifiable;
     use HasFactory;
 
@@ -23,6 +27,10 @@ class User extends Authenticatable
     protected $hidden = [
         'remember_token',
         'password',
+    ];
+
+    protected $appends = [
+        'avatar',
     ];
 
     protected $dates = [
@@ -46,6 +54,24 @@ class User extends Authenticatable
         'updated_at',
         'deleted_at',
     ];
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')->fit('crop', 50, 50);
+        $this->addMediaConversion('preview')->fit('crop', 120, 120);
+    }
+
+    public function getAvatarAttribute()
+    {
+        $file = $this->getMedia('avatar')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
+
+        return $file;
+    }
 
     public function getIsAdminAttribute()
     {

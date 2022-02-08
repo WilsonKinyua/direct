@@ -207,7 +207,11 @@
                                         @foreach ($users as $key => $user)
                                             <tr class="odd gradeX">
                                                 <td class="patient-img">
-                                                    <img src="{{ asset('images/avatar.jpeg') }}" alt="">
+                                                    @if ($user->avatar)
+                                                        <img src="{{ $user->avatar->getUrl() }}" alt="">
+                                                    @else
+                                                        <img src="{{ asset('images/avatar.jpeg') }}" alt="">
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     {{ $user->name ?? '' }}

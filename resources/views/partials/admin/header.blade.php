@@ -3,7 +3,7 @@
     <div class="page-header-inner ">
         <!-- logo start -->
         <div class="page-logo">
-            <a href="{{ route('admin.home')}}">
+            <a href="{{ route('admin.home') }}">
                 <span class="logo-icon material-icons fa-rotate-45">school</span>
                 <span class="logo-default">DIRECT</span> </a>
         </div>
@@ -100,13 +100,17 @@
                 <!-- start manage user dropdown -->
                 <li class="dropdown dropdown-user">
                     <a class="dropdown-toggle" data-bs-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <img alt="" class="img-circle " src="https://avatars.githubusercontent.com/u/44901716?v=4" />
+                        @if (Auth::user()->avatar)
+                            <img src="{{ Auth::user()->avatar->getUrl() }}" alt="" class="img-circle ">
+                        @else
+                            <img src="{{ asset('images/avatar.jpeg') }}" alt="" class="img-circle ">
+                        @endif
                         <span class="username username-hide-on-mobile"> {{ Auth::user()->name ?? 'John Doe' }} </span>
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
-                            <a href="{{ route('admin.user.profile')}}">
+                            <a href="{{ route('admin.user.profile') }}">
                                 <i class="icon-user"></i> Profile </a>
                         </li>
                         <li>
@@ -116,7 +120,8 @@
                         </li>
 
                         <li>
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                            <a href="#"
+                                onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                                 <i class="icon-logout"></i> Log Out </a>
                         </li>
                     </ul>

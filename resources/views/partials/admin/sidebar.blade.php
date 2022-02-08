@@ -11,8 +11,13 @@
                 <li class="sidebar-user-panel">
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="{{ asset('images/avatar.jpeg') }}" class="img-circle user-img-circle"
-                                alt="User Image" />
+                            @if (Auth::user()->avatar)
+                                <img src="{{ Auth::user()->avatar->getUrl() }}" alt=""
+                                    class="img-circle user-img-circle">
+                            @else
+                                <img src="{{ asset('images/avatar.jpeg') }}" alt=""
+                                    class="img-circle user-img-circle">
+                            @endif
                         </div>
                         <div class="pull-left info">
                             <p>{{ Auth::user()->name ?? 'John Doe' }}</p>
@@ -130,7 +135,8 @@
                                         </a>
                                     </li>
                                 @endcan
-                                <li class="nav-item {{ request()->is('admin/all/showrooms/staffs') || request()->is('admin/all/showrooms/staffs/*') ? 'active' : '' }}">
+                                <li
+                                    class="nav-item {{ request()->is('admin/all/showrooms/staffs') || request()->is('admin/all/showrooms/staffs/*') ? 'active' : '' }}">
                                     <a href="{{ route('admin.all.staffs') }}" class="nav-link ">
                                         <i class="fa fa-list"></i>
                                         <span class="title">Showroom Staff</span>
