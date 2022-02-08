@@ -67,6 +67,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
+    Route::get('profile/account','UsersController@profile')->name('user.profile');
+    Route::put('profile/account/{user}','UsersController@updateProfile')->name('user.profile.update');
 
     // staff
     Route::resource('staffs','StaffController');

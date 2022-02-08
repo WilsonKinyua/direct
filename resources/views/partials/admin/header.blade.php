@@ -106,7 +106,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
-                            <a href="#">
+                            <a href="{{ route('admin.user.profile')}}">
                                 <i class="icon-user"></i> Profile </a>
                         </li>
                         <li>

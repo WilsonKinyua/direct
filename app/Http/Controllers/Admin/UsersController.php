@@ -83,4 +83,17 @@ class UsersController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
+    // user profile
+    public function profile()
+    {
+        return view('admin.users.profile');
+    }
+
+    // update profile
+    public function updateProfile(Request $request, User $user)
+    {
+        $user->update($request->all());
+        return redirect()->back()->with('success', 'Profile updated successfully');
+    }
 }
