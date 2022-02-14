@@ -134,13 +134,13 @@
                                                         </td>
                                                         <td>
                                                             @if ($showroom->status == 1)
-                                                                <a href="{{ route('admin.showrooms.status', $showroom->id) }}" title="Click to deactivate"
-                                                                    class="btn btn-success">
+                                                                <a href="{{ route('admin.showrooms.status', $showroom->id) }}"
+                                                                    title="Click to deactivate" class="btn btn-success">
                                                                     <i class="fa fa-check"></i>
                                                                 </a>
                                                             @else
-                                                                <a href="{{ route('admin.showrooms.status', $showroom->id) }}" title="Click to activate"
-                                                                    class="btn btn-danger">
+                                                                <a href="{{ route('admin.showrooms.status', $showroom->id) }}"
+                                                                    title="Click to activate" class="btn btn-danger">
                                                                     <i class="fa fa-times"></i>
                                                                 </a>
                                                             @endif
@@ -192,49 +192,61 @@
                 <div class="state-overview">
                     <div class="row text-uppercase">
                         <div class="col-lg-3 col-sm-6">
-                            <div class="overview-panel purple">
-                                <div class="symbol">
-                                    <i class="fa fa-car usr-clr"></i>
+                            <a href="{{ route('admin.staffs.index') }}">
+                                <div class="overview-panel orange">
+                                    <div class="symbol">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="value white">
+                                        <p class="sbold addr-font-h1" data-counter="counterup"
+                                            data-value="{{ count($users) }}">0
+                                        </p>
+                                        <p>Staffs</p>
+                                    </div>
                                 </div>
-                                <div class="value white">
-                                    <p class="sbold addr-font-h1" data-counter="counterup"
-                                        data-value="{{ count($inventories) }}">0</p>
-                                    <p>Vehicles in Stock</p>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-lg-3 col-sm-6">
-                            <div class="overview-panel orange">
-                                <div class="symbol">
-                                    <i class="fa fa-cab"></i>
+                            <a href="{{ route('admin.inventories.index') }}">
+                                <div class="overview-panel purple">
+                                    <div class="symbol">
+                                        <i class="fa fa-car usr-clr"></i>
+                                    </div>
+                                    <div class="value white">
+                                        <p class="sbold addr-font-h1" data-counter="counterup"
+                                            data-value="{{ count($inventories) }}">0</p>
+                                        <p>Vehicles in Stock</p>
+                                    </div>
                                 </div>
-                                <div class="value white">
-                                    <p class="sbold addr-font-h1" data-counter="counterup" data-value="0">0</p>
-                                    <p>Sold Vehicles</p>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-lg-3 col-sm-6">
-                            <div class="overview-panel deepPink-bgcolor">
-                                <div class="symbol">
-                                    <i class="fa fa-times-circle-o"></i>
+                            <a href="{{ route('admin.sales.index') }}">
+                                <div class="overview-panel deepPink-bgcolor">
+                                    <div class="symbol">
+                                        <i class="fa fa-car usr-clr"></i>
+                                    </div>
+                                    <div class="value white">
+                                        <p class="sbold addr-font-h1" data-counter="counterup"
+                                            data-value="{{ count($sold_cars) }}">0</p>
+                                        <p>Sold Out Vehicles</p>
+                                    </div>
                                 </div>
-                                <div class="value white">
-                                    <p class="sbold addr-font-h1" data-counter="counterup" data-value="0">0</p>
-                                    <p>Sold Out</p>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-lg-3 col-sm-6">
-                            <div class="overview-panel blue-bgcolor">
-                                <div class="symbol">
-                                    <i class="fa fa-money"></i>
+                            <a href="{{ route('admin.sales.index') }}">
+                                <div class="overview-panel blue-bgcolor">
+                                    <div class="symbol">
+                                        <i class="fa fa-money"></i>
+                                    </div>
+                                    <div class="value white">
+                                        <p class="sbold addr-font-h1" data-counter="counterup"
+                                            data-value="{{ number_format($sales->sum('price')) }}">0</p>
+                                        <p>Sales in Ksh</p>
+                                    </div>
                                 </div>
-                                <div class="value white">
-                                    <p class="sbold addr-font-h1" data-counter="counterup" data-value="0">0</p>
-                                    <p>Sales in shilling</p>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -254,36 +266,47 @@
                                     <div class="table-responsive">
                                         <table class="table display product-overview mb-30" id="support_table">
                                             <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Vehicle </th>
-                                                    <th>Ref ID</th>
-                                                    <th>Date Sold</th>
-                                                    <th>Price</th>
-                                                    <th>Status</th>
-                                                    <th>Action</th>
+                                                <tr class="text-uppercase">
+                                                    <th>REFID</th>
+                                                    <th> Inventory </th>
+                                                    <th> Price (Ksh) </th>
+                                                    <th> Sold At (Ksh) </th>
+                                                    <th> Sold By </th>
+                                                    <th> Sold To </th>
+                                                    <th>Payment Method</th>
+                                                    <th>Date</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {{-- <tr>
-                                                    <td>1</td>
-                                                    <td>Toyota Van</td>
-                                                    <td>#TX10093</td>
-                                                    <td>27/12/2021</td>
-                                                    <td>Ksh. 3,200,000</td>
-                                                    <td>
-                                                        <span class="label label-sm label-success">paid</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="javascript:void(0)" class="text-inverse"
-                                                            title="View Invoice" data-bs-toggle="tooltip">
-                                                            <i class="fa fa-bookmark-o"></i></a>
-                                                        &nbsp; &nbsp;
-                                                        <a href="javascript:void(0)" class=""
-                                                            data-bs-toggle="tooltip" title="Fully Paid"><i
-                                                                class="fa fa-check"></i></a>
-                                                    </td>
-                                                </tr> --}}
+                                                @foreach ($sales->slice(0, 20) as $sale)
+                                                    <tr>
+                                                        <td class="text-uppercase">
+                                                            <small><a href="">{{ $sale->ref_id ?? '' }}</a></small>
+                                                        </td>
+                                                        <td>
+                                                            {{ $sale->inventory->brand_name ?? '' }}
+                                                        </td>
+                                                        <td>
+                                                            {{ number_format($sale->inventory->price ?? '') }}
+                                                        </td>
+                                                        <td>
+                                                            {{ number_format($sale->price ?? '') }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $sale->user->name ?? '' }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $sale->customer_name ?? '' }}
+                                                        </td>
+                                                        <td class="center">
+                                                            <span
+                                                                class="badge badge-info">{{ $sale->payment_method ?? '' }}</span>
+                                                        </td>
+                                                        <td>
+                                                            {{ $sale->created_at->format('d-m-Y') ?? '' }}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

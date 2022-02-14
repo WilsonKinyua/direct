@@ -9,7 +9,7 @@ class LocalStockController extends Controller
 {
     public function index()
     {
-        $inventories = Inventory::all();
+        $inventories = Inventory::where("is_active", True)->get();
         return view('public.local-stock', compact('inventories'));
     }
 }

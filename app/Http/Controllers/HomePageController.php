@@ -13,7 +13,7 @@ class HomePageController extends Controller
     public function index()
     {
         $showrooms = Showroom::where('status', 1)->limit(4)->get();
-        $inventories = Inventory::limit(8)->get();
+        $inventories = Inventory::where("is_active", True)->limit(8)->get();
         return view('public.home', compact('showrooms', 'inventories'));
     }
 
@@ -105,6 +105,7 @@ class HomePageController extends Controller
     {
         $inventories = Inventory::where('manufacture_year', $year)
             ->where('make', $make)
+            ->where("is_active", True)
             ->where('price', '<=', $price)
             ->get();
         return view('public.advanced-search', compact('inventories', 'year', 'make', 'price'));

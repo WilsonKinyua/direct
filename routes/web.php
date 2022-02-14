@@ -79,6 +79,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // all staffs
     Route::get('all/showrooms/staffs', 'StaffController@allStaffs')->name('all.staffs');
 
+    // sales
+    Route::resource('sales','SalesController');
+
     // Inventory
     Route::delete('inventories/destroy', 'InventoryController@massDestroy')->name('inventories.massDestroy');
     Route::post('inventories/media', 'InventoryController@storeMedia')->name('inventories.storeMedia');

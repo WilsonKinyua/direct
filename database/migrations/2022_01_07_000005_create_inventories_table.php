@@ -29,6 +29,7 @@ class CreateInventoriesTable extends Migration
             $table->string('interior_color')->nullable();
             $table->string('exterior_color')->nullable();
             $table->unsignedBigInteger('showroom_id');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

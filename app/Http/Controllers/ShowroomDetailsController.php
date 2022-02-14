@@ -15,7 +15,7 @@ class ShowroomDetailsController extends Controller
         if (!$showroom) {
             abort(404);
         }
-        $inventories = Inventory::where('showroom_id', $showroom->id)->get();
+        $inventories = Inventory::where('showroom_id', $showroom->id)->where("is_active", True)->get();
 
         return view('public.showroom-details', compact('showroom', 'inventories'));
     }

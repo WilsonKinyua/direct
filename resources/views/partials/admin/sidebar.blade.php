@@ -228,28 +228,33 @@
                             </ul>
                         </li>
                     @endcan
-                    <li class="nav-item">
-                        <a href="#" class="nav-link nav-toggle">
-                            <i class="material-icons">dvr</i>
-                            <span class="title">Sales</span>
-                            <span class="label label-rouded label-menu label-warning">new</span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link ">
-                                    <i class="fa fa-plus-circle"></i>
-                                    <span class="title">Record Sales</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link ">
-                                    <i class="fa fa-list"></i>
-                                    <span class="title">Sales Overview</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    @can('sales_access')
+                        <li class="nav-item {{ request()->is('admin/sales/create*') ? 'active open' : '' }} {{ request()->is('admin/sales*') ? 'active open' : '' }}">
+                            <a href="#" class="nav-link nav-toggle">
+                                <i class="material-icons">dvr</i>
+                                <span class="title">Sales</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                @can('sales_create')
+                                    <li class="nav-item {{ request()->is('admin/sales/create') || request()->is('admin/sales/create/*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.sales.create') }}" class="nav-link ">
+                                            <i class="fa fa-plus-circle"></i>
+                                            <span class="title">Record Sales</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('sales_access')
+                                <li class="nav-item {{ request()->is('admin/sales') || request()->is('admin/sales/*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.sales.index') }}" class="nav-link ">
+                                        <i class="fa fa-list"></i>
+                                        <span class="title">Sales Overview</span>
+                                    </a>
+                                </li>
+                                @endcan
+                            </ul>
+                        </li>
+                    @endcan
                     {{-- <li class="nav-item">
                         <a href="javascript:;" class="nav-link nav-toggle">
                             <i class="material-icons">settings</i>

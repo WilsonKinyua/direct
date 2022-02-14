@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Inventory;
+use App\Models\Sales;
 use App\Models\Showroom;
+use App\Models\User;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+use phpDocumentor\Reflection\PseudoTypes\False_;
 
 class HomeController
 {
@@ -47,15 +50,20 @@ class HomeController
         //         ->{$settings1['aggregate_function'] ?? 'count'}($settings1['aggregate_field'] ?? '*');
         // }
         $showrooms = Showroom::orderBy("id", "desc")->get();
-
-        // get logged in user showroom id
         $user = auth()->user();
         if ($user->showroom) {
             $showroom_id = $user->showroom->id;
-            $inventories = Inventory::where('showroom_id', '=', $showroom_id)->orderBy("id", "desc")->get();
+            $inventories = Inventory::where("showroom_id", $showroom_id)->where("is_active", True)->orderBy("id", "desc")->get();
+            $sold_cars = Inventory::where("showroom_id", $showroom_id)->where("is_active", False)->orderBy("id", "desc")->get();
+            $sales = Sales::where("showroom_id", $showroom_id)->orderBy("id", "desc")->get();
+            $users = User::where('showroom_id', '=', $showroom_id)->orderBy("id", "desc")->get();
+            $total_sales = Sales::where("showroom_id", $showroom_id)->sum('price');
         } else {
             $inventories = [];
+            $sold_cars = [];
+            $users = [];
+            $sales = [];
         }
-        return view('home', compact('showrooms', 'inventories'));
+        return view('home', compact('showrooms', 'inventories', 'sold_cars', 'users', 'sales'));
     }
 }

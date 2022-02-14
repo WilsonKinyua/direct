@@ -46,6 +46,7 @@ class Inventory extends Model implements HasMedia
         'engine_size', //
         'fuel',
         'description', //
+        'is_active', //
         'created_at',
         'updated_at',
         'deleted_at',

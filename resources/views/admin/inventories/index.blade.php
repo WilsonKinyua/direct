@@ -59,9 +59,9 @@
                                                                 <th>
                                                                     {{ trans('cruds.inventory.fields.exterior_color') }}
                                                                 </th>
-                                                                {{-- <th>
-                                                                    {{ trans('cruds.inventory.fields.pictures') }}
-                                                                </th> --}}
+                                                                <th>
+                                                                    Status
+                                                                </th>
                                                                 <th>
                                                                     Action
                                                                 </th>
@@ -94,15 +94,18 @@
                                                                     <td>
                                                                         {{ $inventory->exterior_color ?? '' }}
                                                                     </td>
-                                                                    {{-- <td>
-                                                                        @foreach ($inventory->pictures as $key => $media)
-                                                                            <a href="{{ $media->getUrl() }}"
-                                                                                target="_blank"
-                                                                                style="display: inline-block">
-                                                                                <img src="{{ $media->getUrl('thumb') }}">
-                                                                            </a>
-                                                                        @endforeach
-                                                                    </td> --}}
+                                                                    <td>
+                                                                        @if ($inventory->status == 1)
+                                                                            <span class="label label-sm label-success">
+                                                                                Not sold
+                                                                            </span>
+                                                                        @else
+                                                                            <span class="label label-sm label-danger">
+                                                                                Sold
+                                                                            </span>
+                                                                        @endif
+
+                                                                    </td>
                                                                     <td>
                                                                         @can('inventory_show')
                                                                             <a class="btn btn-xs btn-primary"
